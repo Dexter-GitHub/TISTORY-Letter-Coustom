@@ -610,7 +610,7 @@ html, body {
   position: relative;
   max-width: 800px;
   margin: 0 auto;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 /* main - index_type_common */
@@ -726,13 +726,14 @@ html, body {
 .article_view p {
   margin: 0 0 20px;
 }
+
 .article_view h1,
 .article_view h2,
 .article_view h3,
 .article_view h4 {
   margin: 24px 0;
   font-weight: 500;
-  color: red; 
+  color: var(--color-text1);
 }
 
 .article_view h1 {
@@ -1913,12 +1914,50 @@ html, body {
   content: "\f38b";
   margin-right: 8px;
 }
+/* category - by dexter end */
+/* toc(Table Of Contents) - by dexter */
+.toc {    
+  width: 250px;       
+}
+
+/* 스크롤 상위 */
+.toc-absolute {
+  position: absolute;  
+  right: calc((100% - 850px)/2 - 240px);  
+}
+
+/* 스크롤 타이틀 지나침 */
+.toc-fixed {
+  position: fixed;
+  top: 103px;  
+  right: calc((100% - 850px)/2 - 430px);
+}
+
+.toc-list {
+  text-overflow: ellipsis;
+}
+
+.toc-list .toc-list-item a {
+  display: inline-block;
+  padding: 5px 0;
+  color: var(--color-text1);
+}
+
+.toc-list-item .is-collapsed {
+  max-height: 3000px;
+}
+
+.toc-list-item .toc-link::before {
+  background-color: var(--color-bg-element1);
+}
+
+.toc-list-item .is-active-link::before {
+  background-color: var(--color-primary2);
+}
 
 .floating-toc {
   border: 1px solid red;
 }
-
-/* category - by dexter end */
 
 /* media query - mobile - category_list */
 @media screen and (max-width: 820px) {
@@ -2302,7 +2341,7 @@ html, body {
 
   .area_view_content .article_content {
     margin-top: 100px;
-		padding-top: 54px;
+		padding-top: 54px;    
   }
 
   .item_comment.reply {
