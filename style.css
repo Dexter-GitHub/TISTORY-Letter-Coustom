@@ -384,7 +384,7 @@ html, body {
   position: fixed;
   transition: left 0.2s ease-out;
   overflow: auto;
-  background-color: var(--color-bg-element1);  
+  background-color: var(--color-bg-element2);  
   /* border-right: 1px solid #eee; */  
 }
 
@@ -1915,7 +1915,91 @@ html, body {
   margin-right: 8px;
 }
 /* category - by dexter end */
-/* toc(Table Of Contents) - by dexter */
+/* 본문 목차 Toc - by dexter [23-11-17] */
+.book-toc {
+  border: 2px solid var(--color-bg-element4);
+  border-radius: 10px;
+  margin: 8% 5%;  
+  overflow: hidden;
+}
+
+.book-toc > p {  
+  padding-left: 30px;
+  height: 50px;
+  line-height: 50px;
+  background-color: var(--color-primary1);
+  color: var(--color-bg-page1);
+  font-weight: bold;
+}
+
+.book-toc > p::before {  
+  font-family: 'fontawesome';
+  content: '\f03a';
+  padding-right: 10px;
+}
+
+.book-toc > p::after {  
+  font-family: 'fontawesome';
+  content: '\f102';
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+.book-toc > .close::after {  
+  font-family: 'fontawesome';
+  content: '\f103';
+}
+
+.book-toc > .close #toc {
+  display: none;
+}
+
+.book-toc #toc {
+  margin-top: 0;  
+  padding: 0;
+  list-style: none;  
+}
+
+.book-toc #toc > li > ul,
+.book-toc #toc > li > ul > li > ul {
+  margin-top: 0;
+  padding: 0;
+}
+
+.book-toc #toc a {
+  display: block;  
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-decoration: none;
+  color: var(--color-text5);
+}
+
+.book-toc #toc a {
+  border-bottom: 1px solid var(--color-bg-element4);
+}
+
+.book-toc #toc a:hover {
+  background-color: var(--color-primary-op);
+}
+
+.book-toc #toc li > a {
+  padding-left: 30px;
+}
+
+.book-toc #toc li > ul > li > a {
+  padding-left: 60px;
+}
+
+.book-toc #toc li > ul > li > ul > li > a {
+  padding-left: 90px;
+}
+
+.book-toc #toc > li:is(:last-child) a:is(:last-child) {
+  border-bottom: 0;
+}
+
+/* 본문 목차 Toc - by dexter end */
+/* toc(Table Of Contents) - by dexter [23-11-16] */
 .toc {    
   width: 250px;       
 }
@@ -1954,10 +2038,7 @@ html, body {
 .toc-list-item .is-active-link::before {
   background-color: var(--color-primary2);
 }
-
-.floating-toc {
-  border: 1px solid red;
-}
+/* toc(Table Of Contents) - by dexter end */
 
 /* media query - mobile - category_list */
 @media screen and (max-width: 820px) {
@@ -2277,7 +2358,7 @@ html, body {
     width: var(--nav-width);
     box-sizing: border-box;
     bottom: var(--box_visit-height);
-    background-color: var(--color-bg-element1);
+    background-color: var(--color-bg-element2);
   }
 
   .area_menu .box_visit {
@@ -2287,7 +2368,7 @@ html, body {
     bottom: 0; 
     width: var(--nav-width);
     box-sizing: border-box;
-    background-color: var(--color-bg-element1);
+    background-color: var(--color-bg-element2);
   }
 
   .inner_header .btn_menu {
@@ -2810,11 +2891,23 @@ body {
 /* html class name 변경에 따른 컬러셋 변경 */
 html[theme="light"] {
   --color-bg-page1: #FFFFFF;  
-  --color-bg-element1: #F8F9FA; 
+  --color-bg-element1: #FFFFFF; 
+  --color-bg-element2: #F8F9FA;
+  --color-bg-element3: #E9ECEF;
+  --color-bg-element4: #DEE2E6;
+  --color-bg-element5: #212529;
+  --color-bg-element6: #343A40;
+  --color-bg-element7: #FFFFFF;
+  --color-bg-element8: #FBFDFC;
   --color-text1: #212529;
   --color-text2: #495057;
   --color-text3: #868E96;
   --color-text4: #CED4DA;
+  --color-text5: #121212;
+  --color-border1: #343A40;
+  --color-border2: #ADB5BD;
+  --color-border3: #DEE2E6;
+  --color-border4: #F1F3F5;
   --color-button-text: #FFFFFF;
   --color-icon: #292A2D;  
   --color-bg-icon: #F8F9FA;
@@ -2826,10 +2919,22 @@ html[theme="light"] {
 html[theme="dark"] {
   --color-bg-page1: #121212;  
   --color-bg-element1: #1E1E1E;
+  --color-bg-element2: #1E1E1E;
+  --color-bg-element3: #252525;
+  --color-bg-element4: #2E2E2E;
+  --color-bg-element5: #F1F3F5;
+  --color-bg-element6: #F8F9FA;
+  --color-bg-element7: #252525;
+  --color-bg-element8: #0C0C0C;
   --color-text1: #ECECEC;
   --color-text2: #D9D9D9;
   --color-text3: #ACACAC;
   --color-text4: #595959;
+  --color-text5: #FFFFFF;
+  --color-border1: #E0E0E0;
+  --color-border2: #A0A0A0;
+  --color-border3: #4D4D4D;
+  --color-border4: #2A2A2A; 
   --color-button-text: #121212;
   --color-icon: #ffffff;  
   --color-bg-icon: #121212;

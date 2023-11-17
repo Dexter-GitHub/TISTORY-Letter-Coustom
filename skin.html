@@ -17,7 +17,7 @@
     <script src="./images/common.js"></script>    
     <!-- By Dexter -->
     <script src="https://kit.fontawesome.com/968e631654.js" crossorigin="anonymous"></script>
-    <!-- 목차 생성 jquery -->
+    <!-- 본문 시작 목차 생성 jquery -->
     <script src="./images/jquery.toc.min.js"></script>
     <!-- tocbot-floating 목차 생성 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.22.0/tocbot.min.js" integrity="sha512-jIGXw0ZiI49sz1oSo/xFJt5b0HWdLKyO/xAVXcYT85PedVnep1ZvEFn1AzWnmu/ZELZhLyq+KZibjcgoVeIK+Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -721,7 +721,7 @@
 
             </div>
             <!-- // container -->
-            <!-- by-Dexter -->            
+            <!-- 테마 변경 by-Dexter -->            
             <div class="theme">
                 <button class="theme-button">
                     <span class="text-hidden">테마</span>
@@ -752,11 +752,24 @@
                     })
             });
     </script>
-    <!-- 목차 생성 -->
+    <!-- 본문 시작 목차 생성 -->
     <script>
         $(document).ready(function() {
-            $('#toc').toc({content: ".tt_article_useless_p_margin", headings: "h2,h3,h4"});
+            $('#toc').toc({content: ".tt_article_useless_p_margin", headings: "h2, h3, h4"});
         });
+
+        $(".book-toc > p").before().click(function() {
+            var className = $(".book-toc > p").hasClass('toggle');
+            console.log(className);
+            if ((className === undefined) || (className === false)) {                
+                $(".book-toc > p").addClass('toggle');
+                $("#toc").addClass('close');
+            }
+            else {
+                $(".book-toc > p").removeClass('toggle');
+                $("#toc").removeClass('close');
+            }
+        });      
     </script>
     <!-- tocbot 생성 -->
     <script>
@@ -799,16 +812,6 @@
             });
         });
     </script>
-    <!-- <script>
-        var safeFlag = true;
-        function appendToc() {
-            var bookToc = $('.book-toc');
-            var floatingToc = $('.floating-toc');
-            if ((bookToc.length > 0) && (window.scrollY > bookToc.offset().top + bookToc.innerHeight())) {
-
-            }
-        }
-    </script> -->
 </body>
 <script>
     $('.article_content').find('table').each(function (idx, el) {
