@@ -360,6 +360,7 @@
                                         </li>
                                         <!-- // category_list -->
                                     </s_index_article_rep>
+                                    
                                     <!-- 퍼머링크 페이지일 때만 표시되는 영역 -->
                                     <s_permalink_article_rep>
                                         <li class="category_content_area">
@@ -370,23 +371,36 @@
                                                 <div class="article_content">
                                                     <div class="info_post">
                                                         <a href="[##_article_rep_link_##]" class="link_title">
+                                                            <!-- 제목 _article_rep_title_ -->
                                                             <div class="title_view">
-                                                                <!-- 제목 -->
                                                                 [##_article_rep_title_##]
                                                             </div>
                                                         </a>
+                                                        <!-- 타이틀 아래 글 정보 -->
                                                         <div class="view_info_post">
-                                                            <a href="[##_article_rep_category_link_##]" class="link_category thema_apply">
-                                                                <span class="category">
-                                                                    <!-- 카테고리 이름 -->
-                                                                    [##_article_rep_category_##]
+                                                            <div>
+                                                                <a href="[##_article_rep_category_link_##]" class="link_category thema_apply">
+                                                                    <span class="category">
+                                                                        <!-- 카테고리 이름 -->
+                                                                        [##_article_rep_category_##]
+                                                                    </span>
+                                                                </a>
+                                                                <span class="date">
+                                                                    <!-- 글 발행 날짜/시간 (yyyy.m.d.) -->
+                                                                    [##_article_rep_simple_date_##]
                                                                 </span>
-                                                            </a>
-                                                            <span class="date">
-                                                                <!-- 글 발행 날짜/시간 (yyyy.m.d. HH:MM) -->
-                                                                [##_article_rep_date_##]
-                                                            </span>
-                                                            [##_s_ad_isolation_##]
+                                                                <!-- 글수정 버튼 -->
+                                                                [##_s_ad_isolation_##]
+                                                            </div>                                                             
+                                                            <!-- 글과 관련된 태그가 출력되는 영역 -->
+                                                            <s_tag_label>                                                        
+                                                                <div class="area_tag">                                                                        
+                                                                    <div class="tag_content">
+                                                                        <!-- 태그 반복 출력 -->
+                                                                        [##_tag_label_rep_##]
+                                                                    </div>
+                                                                </div>                                                        
+                                                            </s_tag_label>                                                            
                                                         </div>
                                                     </div>
                                                     <!-- tocbot -->
@@ -394,20 +408,8 @@
                                                     <!-- 본문 내용 영역 -->
                                                     <div class="article_view">                                                        
                                                         <!-- 본문 내용 -->
-                                                        [##_article_rep_desc_##]    
-                                                    </div>
-
-                                                    <s_tag_label>
-                                                        <!-- area_tag -->
-                                                        <div class="area_tag">
-                                                            <h2 class="title_tag">TAG</h2>
-                                                            <div class="tag_content">
-                                                                <!-- 태그 반복 출력 -->
-                                                                [##_tag_label_rep_##]
-                                                            </div>
-                                                        </div>
-                                                        <!-- // area_tag -->
-                                                    </s_tag_label>
+                                                        [##_article_rep_desc_##]
+                                                    </div>                                                    
 
                                                     <!-- 카테고리 글 더보기 영역 -->
                                                     <s_article_related>
@@ -809,6 +811,15 @@
                     $('.toc').addClass('toc-absolute');
                     $('.toc').removeClass('toc-fixed');
                 }
+            });
+        });
+    </script>
+    <!-- 태그 쉼표 제거 -->
+    <script>
+        $(function() { 
+            $('.tag_content').each(function () {
+                var comma = $(this).html();
+                $(this).html(comma.replace(/,/g, ''));
             });
         });
     </script>

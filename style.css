@@ -822,7 +822,6 @@ html, body {
   padding: 7px;
 }
 
-
 .article_view pre {
   background: rgba(0, 0, 0, 0.05);
   font-size: 16px;
@@ -1480,8 +1479,9 @@ html, body {
 
 /* area_view_content - area_tag */
 .area_view_content .area_tag {
-  padding: 40px 0 40px 0;
-  border-bottom: 1px solid #eee;
+  padding: 20px 0 20px 0;
+  /* border-bottom: 1px solid #eee; */
+  border: 1px solid red;
 }
 
 .area_view_content .area_tag:after {
@@ -1502,11 +1502,15 @@ html, body {
   color: #929292;
 }
 
+/* 태그 컨텐츠 */
 .area_view_content .area_tag .tag_content a {
   display: inline-block;
   margin-right: 10px;
   font-size: 16px;
-  color: #929292;
+  /* color: #929292; */
+  color: var(--color-primary1);
+  background-color: var(--color-bg-tag);
+  border-radius: 15px;
 }
 
 .area_view_content .area_tag .tag_content a:hover {
@@ -1915,11 +1919,12 @@ html, body {
   margin-right: 8px;
 }
 /* category - by dexter end */
+
 /* 본문 목차 Toc - by dexter [23-11-17] */
 .book-toc {
   border: 2px solid var(--color-bg-element4);
   border-radius: 10px;
-  margin: 8% 5%;  
+  margin: 7% 5%;  
   overflow: hidden;
 }
 
@@ -1930,6 +1935,7 @@ html, body {
   background-color: var(--color-primary1);
   color: var(--color-bg-page1);
   font-weight: bold;
+  user-select: none;
 }
 
 .book-toc > p::before {  
@@ -1938,19 +1944,22 @@ html, body {
   padding-right: 10px;
 }
 
+/* 목차 접기 버튼 */
 .book-toc > p::after {  
   font-family: 'fontawesome';
   content: '\f102';
-  padding-left: 10px;
+  margin-right: 20px;
   cursor: pointer;
+  float: right;
 }
 
-.book-toc > .close::after {  
+/* 목차 펼치기 버튼 */
+.book-toc > .toggle::after {  
   font-family: 'fontawesome';
   content: '\f103';
 }
 
-.book-toc > .close #toc {
+.book-toc > .close {
   display: none;
 }
 
@@ -1975,15 +1984,40 @@ html, body {
 }
 
 .book-toc #toc a {
+  position: relative;
   border-bottom: 1px solid var(--color-bg-element4);
 }
 
+.book-toc #toc a::after {
+  background-color: var(--color-primary1);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  content: '';
+  height: 2px;
+  display: block;
+  transform: translate3d(-102%, 0, 0);
+}
+
+.book-toc #toc a:hover::after {
+  animation: underlineAnimate 1s ease;
+}
+
 .book-toc #toc a:hover {
+  color: var(--color-text5);
   background-color: var(--color-primary-op);
 }
 
 .book-toc #toc li > a {
-  padding-left: 30px;
+  padding-left: 20px;  
+}
+
+.book-toc #toc > li > a:before {
+  font-family: 'fontawesome';
+  content: '\f0C6';
+  color: var(--color-primary1);
+  padding-right: 10px;
 }
 
 .book-toc #toc li > ul > li > a {
@@ -1997,9 +2031,43 @@ html, body {
 .book-toc #toc > li:is(:last-child) a:is(:last-child) {
   border-bottom: 0;
 }
+/* 본문 목차 Toc - by Dexter end */
 
-/* 본문 목차 Toc - by dexter end */
-/* toc(Table Of Contents) - by dexter [23-11-16] */
+/* 본문 제목 스타일 - by Dexter */
+/* By Dexter */
+.contents_style {
+  color: var(--color-text1);
+}
+
+.contents_style h2 {
+  font-weight: bold;
+}
+
+/* Style-1 서식 스타일 */
+.contents_style .style-1 {
+  border-bottom: 2px solid var(--color-border2);
+  padding-bottom: 7px;
+}
+
+.contents_style .style-1 > span {
+  font-size: 26px;
+  border-bottom: 2px solid var(--color-primary1);
+  padding-bottom: 9px;
+}
+
+/* .contents_style h2::after {  
+  height: 1px;
+  width: 100%;
+  background-color: red;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  content: "";
+} */
+
+/* 본문 제목 스타일 - by Dexter end */
+
+/* toc(Table Of Contents) - by Dexter [23-11-16] */
 .toc {    
   width: 250px;       
 }
@@ -2788,11 +2856,6 @@ html, body {
   border-color:#1EB49F;   
 }
 
-/* By Dexter */
-.contents_style {
-  color: var(--color-text1);
-}
-
 .theme {  
   display: flex;
   justify-content: flex-end;  
@@ -2899,6 +2962,7 @@ html[theme="light"] {
   --color-bg-element6: #343A40;
   --color-bg-element7: #FFFFFF;
   --color-bg-element8: #FBFDFC;
+  --color-bg-tag: #F8F9FA;
   --color-text1: #212529;
   --color-text2: #495057;
   --color-text3: #868E96;
@@ -2926,6 +2990,7 @@ html[theme="dark"] {
   --color-bg-element6: #F8F9FA;
   --color-bg-element7: #252525;
   --color-bg-element8: #0C0C0C;
+  --color-bg-tag: #252525;
   --color-text1: #ECECEC;
   --color-text2: #D9D9D9;
   --color-text3: #ACACAC;
@@ -2966,5 +3031,11 @@ html[theme="dark"] {
 
   40%,60%,80% {
       transform: rotate3d(0, 0, 1, -9deg);
+  }
+}
+
+@keyframes underlineAnimate {
+  to {
+      transform: translate3d(101%,0,0)
   }
 }
