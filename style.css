@@ -12,7 +12,8 @@ body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend,
 }
 
 body, button, input, select, table, textarea {
-  color: #333;
+  /* color: #333; */
+  color: var(--color-text2);
   font-family: "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", Dotum, '돋움', "Noto Sans KR", "Nanum Gothic", 'Lato', Helvetica, sans-serif;
 }
 
@@ -705,7 +706,7 @@ html, body {
   padding-top: 60%;
 }
 
-.article_content .article_view {
+.article_content .article_view {  
   font-size: 16px;
   line-height: 24px;  
 }
@@ -1480,8 +1481,7 @@ html, body {
 /* area_view_content - area_tag */
 .area_view_content .area_tag {
   padding: 20px 0 20px 0;
-  /* border-bottom: 1px solid #eee; */
-  border: 1px solid red;
+  /* border-bottom: 1px solid #eee; */  
 }
 
 .area_view_content .area_tag:after {
@@ -1511,10 +1511,12 @@ html, body {
   color: var(--color-primary1);
   background-color: var(--color-bg-tag);
   border-radius: 15px;
+  padding: 3.5px 1rem;  
 }
 
 .area_view_content .area_tag .tag_content a:hover {
-  color: #333;
+  /* color: #333; */
+  opacity: 0.7;
 }
 
 /* .area_view_content .list_related li {
@@ -1924,7 +1926,7 @@ html, body {
 .book-toc {
   border: 2px solid var(--color-bg-element4);
   border-radius: 10px;
-  margin: 7% 5%;  
+  margin: 5%;  
   overflow: hidden;
 }
 
@@ -2033,6 +2035,88 @@ html, body {
 }
 /* 본문 목차 Toc - by Dexter end */
 
+/* 공감 버튼 그룹 */
+.postbtn-absolute {
+  /* border: 1px solid red;   */
+  position: absolute !important;
+  top: 220px;
+  left: calc((100% - 850px)/2 - 75px);
+}
+
+.postbtn-fixed {
+  /* border: 1px solid red;   */
+  position: fixed !important;
+  top: 114px;
+  left: calc((100% - 850px)/2 - (-92px)); 
+}
+
+/* LIKE 버튼 이너 테두리 */
+.container_postbtn .postbtn_like {
+  float: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--color-border4) !important;
+  border-radius: 50px !important;
+  background-color: var(--color-bg-element2);    
+  padding: 8px !important;  
+  height: 100px;
+}
+
+.container_postbtn .btn_post .uoc-icon {
+  display: flex;  
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* <span class="ico_like"> LIKE 버튼 */
+.container_postbtn .btn_post .ico_like {
+  border: 1px solid var(--color-border3);
+  border-radius: 50%;  
+  display: flex;
+  max-width: 100px !important;
+  width: 46px !important;
+  height: 46px !important;  
+  margin: 0 0 !important; 
+  justify-content: center;
+  align-items: center;
+  background: none !important;  
+}
+
+.container_postbtn .btn_post .uoc-count {  
+  margin-top: 8px !important;  
+}
+
+.container_postbtn .btn_post .ico_like::before {  
+  font-family: 'fontawesome';
+  content: '\f004';
+  font-size: 24px !important;  
+  text-indent: 0px;
+  color: var(--color-text3);
+}
+
+.container_postbtn .btn_post .like_on .ico_like::before {
+  color: red;   
+}
+
+.container_postbtn .wrap_btn_share {
+  display: none;
+}
+
+.container_postbtn .btn_post .ico_statistics {
+  display: none !important;
+}
+
+/* .container_postbtn .wrap_btn {
+  display: none;
+} */
+
+.container_postbtn .wrap_btn_etc {
+  display: none;  
+}
+
 /* 본문 제목 스타일 - by Dexter */
 /* By Dexter */
 .contents_style {
@@ -2075,14 +2159,14 @@ html, body {
 /* 스크롤 상위 */
 .toc-absolute {
   position: absolute;  
-  right: calc((100% - 850px)/2 - 240px);  
+  right: calc((100% - 850px)/2 - 250px);  
 }
 
 /* 스크롤 타이틀 지나침 */
 .toc-fixed {
   position: fixed;
   top: 103px;  
-  right: calc((100% - 850px)/2 - 430px);
+  right: calc((100% - 850px)/2 - 417px);
 }
 
 .toc-list {
@@ -2346,8 +2430,7 @@ html, body {
   align-items: center;
   font-size: 18px;
   border-radius: 50%;  
-  background-color: var(--color-bg-element1);
-  
+  background-color: var(--color-bg-element1);  
 }
 
 .sidebar .sidebar_admin .admin:before {
@@ -2734,7 +2817,7 @@ html, body {
 
 /** 티스토리 스타일 커스텀 */
 .container_postbtn {
-  border-bottom: 1px solid #eee;
+  /* border-bottom: 1px solid #eee; */
 }
 
 .visit_counter {
@@ -2880,11 +2963,11 @@ html, body {
   text-rendering: auto;
 }
 
-.fa-moon::before {  
+.fa-moon::before {    
   content: "\f186";
 }
 
-.fa-chvron-up::before {
+.fa-chvron-up::before {  
   content: "\f077";
 }
 

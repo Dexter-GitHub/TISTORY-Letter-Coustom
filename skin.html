@@ -761,8 +761,7 @@
         });
 
         $(".book-toc > p").before().click(function() {
-            var className = $(".book-toc > p").hasClass('toggle');
-            console.log(className);
+            var className = $(".book-toc > p").hasClass('toggle');            
             if ((className === undefined) || (className === false)) {                
                 $(".book-toc > p").addClass('toggle');
                 $("#toc").addClass('close');
@@ -802,7 +801,8 @@
             $('.toc').addClass('toc-absolute');
 
             var toc_top = $('.toc').offset().top - 103;
-            $(window).scroll(function() {                   
+            $(window).scroll(function() {   
+                console.log('toc_top: ', $('.toc').offset().top);                
                 if ($(this).scrollTop() >= toc_top) {                                        
                     $('.toc').addClass('toc-fixed');
                     $('.toc').removeClass('toc-absolute');
@@ -810,6 +810,24 @@
                 else {
                     $('.toc').addClass('toc-absolute');
                     $('.toc').removeClass('toc-fixed');
+                }
+            });
+        });
+    </script>
+    <!-- 공감 버튼 그룹 -->
+    <script>
+        $(document).ready(function () {
+            $('.container_postbtn').addClass('postbtn-absolute');
+            
+            var postbtn_top = $('.container_postbtn').offset().top - 111;
+            $(window).scroll(function() {                
+                if ($(this).scrollTop() >= postbtn_top) {                                        
+                    $('.container_postbtn').addClass('postbtn-fixed');
+                    $('.container_postbtn').removeClass('postbtn-absolute');
+                }
+                else {
+                    $('.container_postbtn').addClass('postbtn-absolute');
+                    $('.container_postbtn').removeClass('postbtn-fixed');
                 }
             });
         });
