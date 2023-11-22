@@ -781,7 +781,7 @@
         Array.prototype.forEach.call(headings, function (heading) {
             var id = heading.id ? heading.id : heading.textContent.trim().toLowerCase().split(' ').join('-').replace(/[\!\@\#\$\%\^\&\*\(\):]/ig, '');                                                                                                                     
             headingMap[id] = !isNaN(headingMap[id]) ? ++headingMap[id] : 0;
-            console.log(headingMap[id]);
+            
             if (headingMap[id]) {
                 heading.id = id + '-' + headingMap[id];
             }
@@ -799,17 +799,29 @@
 
         $(document).ready(function () {
             $('.toc').addClass('toc-absolute');
+            $('.toc').css('left', $('.article_content').width() + 50);
 
             var toc_top = $('.toc').offset().top - 103;
-            $(window).scroll(function() {   
-                console.log('toc_top: ', $('.toc').offset().top);                
+            $(window).scroll(function() {       
                 if ($(this).scrollTop() >= toc_top) {                                        
                     $('.toc').addClass('toc-fixed');
+                    $('.toc').css('left', $('.article_view').offset().left + $('.article_content').width() + 50);
                     $('.toc').removeClass('toc-absolute');
                 }
                 else {
                     $('.toc').addClass('toc-absolute');
+                    $('.toc').css('left', $('.article_content').width() + 50);
                     $('.toc').removeClass('toc-fixed');
+                }
+            });
+
+            $(window).resize(function () {
+                var obj = $('.article_content').offset();
+                if ($(".toc").hasClass("toc-absolute")) {
+                    $('.toc').css('left', $('.article_content').width() + 50);
+                }
+                else if ($(".toc").hasClass("toc-fixed")) { 
+                    $('.toc').css('left', $('.article_content').offset().left + $('.article_view').width() + 50);             
                 }
             });
         });
@@ -818,18 +830,31 @@
     <script>
         $(document).ready(function () {
             $('.container_postbtn').addClass('postbtn-absolute');
-            
+            $(".container_postbtn").css("left", -130);
+
             var postbtn_top = $('.container_postbtn').offset().top - 111;
-            $(window).scroll(function() {                
+            $(window).scroll(function() {
                 if ($(this).scrollTop() >= postbtn_top) {                                        
                     $('.container_postbtn').addClass('postbtn-fixed');
+                    $(".container_postbtn").css("left", $('.article_view').offset().left - 130);
                     $('.container_postbtn').removeClass('postbtn-absolute');
                 }
                 else {
                     $('.container_postbtn').addClass('postbtn-absolute');
+                    $(".container_postbtn").css("left", -130);
                     $('.container_postbtn').removeClass('postbtn-fixed');
                 }
             });
+        });
+
+        $(window).resize(function () {
+            var obj = $('.article_view').offset();
+            if ($(".container_postbtn").hasClass("postbtn-absolute")) {
+                $(".container_postbtn").css("left", -130);
+            }
+            else if ($(".container_postbtn").hasClass("postbtn-fixed")) { 
+                $(".container_postbtn").css("left", obj.left - 130);              
+            }
         });
     </script>
     <!-- 태그 쉼표 제거 -->
@@ -839,6 +864,34 @@
                 var comma = $(this).html();
                 $(this).html(comma.replace(/,/g, ''));
             });
+        });
+    </script>
+    <!-- 카테고리 펼침 뒤 배경 흐리게 -->
+    <script>
+        $("#header").on("click", ".btn_menu", function () {
+            if ($(this).hasClass("btn_menu_off")) {   
+                $("#dimmed").remove();
+            }
+            else {
+                $("body").append('<div id="dimmed" />');
+            }
+        });
+
+        $('body').bind('click', function(e) {
+            var $target = $(e.target);
+            if ($target.closest('.btn_menu').length > 0) {                
+            }
+            else if ($target.closest('.btn_search').length > 0) {                
+            }
+            else if (($target.closest('.area_search').length == 0) && ($target.closest('.area_menu').length == 0)) {
+                $("#dimmed").remove();
+            }
+        });
+
+        $(window).resize(function () {
+            if ($("#dimmed").is(":visible")) {                
+                $('.btn_menu').click();
+            }
         });
     </script>
 </body>

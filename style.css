@@ -375,17 +375,25 @@ html, body {
 
 /* menu open */
 .menu_on .area_menu {
-  left: 0;
-  z-index: 2;
   height: 100%;
+  left: 0;
+  /* z-index: 2; */
+  position: fixed;
+}
+
+.menu_on .area_menu .list_sns,
+.menu_on .area_menu .box_visit { 
+  left: 0;
+  transition: left 0.5s ease-out;
 }
 
 /* area_menu */
 .area_menu {  
   position: fixed;
-  transition: left 0.2s ease-out;
+  transition: left 0.5s ease-out;
   overflow: auto;
-  background-color: var(--color-bg-element2);  
+  background-color: var(--color-bg-element2);
+  z-index: 2;
   /* border-right: 1px solid #eee; */  
 }
 
@@ -2035,19 +2043,17 @@ html, body {
 }
 /* 본문 목차 Toc - by Dexter end */
 
-/* 공감 버튼 그룹 */
-.postbtn-absolute {
-  /* border: 1px solid red;   */
+/* ----- 공감 버튼 그룹 ----- */
+.postbtn-absolute {  
   position: absolute !important;
-  top: 220px;
-  left: calc((100% - 850px)/2 - 75px);
+  top: 220px;  
+  /* left: calc((100% - 850px)/2 - 75px); */
 }
 
-.postbtn-fixed {
-  /* border: 1px solid red;   */
+.postbtn-fixed {  
   position: fixed !important;
-  top: 114px;
-  left: calc((100% - 850px)/2 - (-92px)); 
+  top: 114px;    
+  /* left: calc((100% - 850px)/2 - (-92px)); */
 }
 
 /* LIKE 버튼 이너 테두리 */
@@ -2061,7 +2067,7 @@ html, body {
   border-radius: 50px !important;
   background-color: var(--color-bg-element2);    
   padding: 8px !important;  
-  height: 100px;
+  /* height: 135px; */
 }
 
 .container_postbtn .btn_post .uoc-icon {
@@ -2085,8 +2091,8 @@ html, body {
   background: none !important;  
 }
 
-.container_postbtn .btn_post .uoc-count {  
-  margin-top: 8px !important;  
+.container_postbtn .btn_post .txt_like {  
+  margin: 8px 0 !important;  
 }
 
 .container_postbtn .btn_post .ico_like::before {  
@@ -2098,20 +2104,49 @@ html, body {
 }
 
 .container_postbtn .btn_post .like_on .ico_like::before {
-  color: red;   
+  color: var(--color-primary1);   
 }
 
-.container_postbtn .wrap_btn_share {
-  display: none;
+.container_postbtn .wrap_btn_share {  
+  float: none !important;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  /* margin-top: 55px !important; */
+}
+
+.container_postbtn .wrap_btn_share .ico_share {  
+  border: 1px solid var(--color-border3);
+  border-radius: 50%;
+  max-width: 100px !important;
+  width: 46px !important;
+  height: 46px !important;
+  background: none !important;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container_postbtn .wrap_btn_share .ico_share::before {
+  font-family: "fontawesome";
+  content: "\f1e0";
+  font-size: 24px !important;  
+  text-indent: 0px;
+  color: var(--color-text3);
 }
 
 .container_postbtn .btn_post .ico_statistics {
   display: none !important;
 }
 
-/* .container_postbtn .wrap_btn {
-  display: none;
-} */
+.container_postbtn .wrap_btn {
+  display: flex;  
+}
+
+.container_postbtn .btn_post {
+  display: flex;
+  height: auto !important;
+}
 
 .container_postbtn .wrap_btn_etc {
   display: none;  
@@ -2189,6 +2224,39 @@ html, body {
 
 .toc-list-item .is-active-link::before {
   background-color: var(--color-primary2);
+}
+
+#dimmed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.43);
+}
+
+@media screen and (max-width: 1365px) {
+  .toc {
+    display: none;
+  }
+ 
+  .area_menu,
+  .area_menu .menu_navigation,
+  .area_menu .list_sns,
+  .area_menu .box_visit {    
+    left: -380px;        
+  }
+
+  .inner_header .btn_menu {    
+    display: inline-block !important;
+    left: 60px;    
+  }
+
+  #container {
+    left: 0;
+    width: 100%;
+  }  
 }
 /* toc(Table Of Contents) - by dexter end */
 
@@ -2482,16 +2550,16 @@ html, body {
     height: 1px
   }
 
-  .menu_on #container {
+  /* .menu_on #container {
     left: 380px;
-  }
+  } */
 
   /* area_menu */
   .area_menu {
     /* position: relative; */
     width: 380px;
     height: 100%;
-    left: 0;
+    /* left: 0; */
     /* left: -380px; */
   }
 
@@ -2523,7 +2591,8 @@ html, body {
   }
 
   .inner_header .btn_menu {
-    left: 60px;
+    display: none;
+    /* left: 60px; */
   }
 
   .inner_header .btn_search {
