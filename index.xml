@@ -1,33 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <skin>
+	<!-- 기본 정보 -->
 	<information>
-		<name>Letter</name>
-		<version>1.1</version>
-		<description>
+		<name>Letter</name>											<!-- 표시되는 이름 -->
+		<version>0.1.0</version>									<!-- 스킨 버전 -->
+	<description>													<!-- 스킨 상세 설명 -->
 			<![CDATA[ 최소한의 디자인, 깔끔한 스킨을 원하는 블로거를 위해 만들었습니다. 깔끔한 편지지 위에 여러분의 이야기를 들려주세요. ]]>
 		</description>
-		<license>
+		<license>													<!-- 저작권 -->
 			<![CDATA[ MIT License ]]>
 		</license>
 	</information>
+	<!-- 제작자 -->
 	<author>
-		<name>Tistory</name>
-		<homepage>http://www.tistory.com</homepage>
-		<email>tistoryblog@daum.net</email>
+		<name>Tistory</name>										<!-- 표시 되는 이름 -->
+		<homepage>http://www.tistory.com</homepage>					<!-- 제작자 웹사이트 주소 -->
+		<email>tistoryblog@daum.net</email>							<!-- 연락할 이메일 주소 -->
 	</author>
+	<!-- 설정 기본값 -->
 	<default>
-		<recentEntries>4</recentEntries>
-		<recentComments>5</recentComments>
-		<recentTrackbacks>5</recentTrackbacks>
-		<itemsOnGuestbook>5</itemsOnGuestbook>
-		<tagsInCloud>20</tagsInCloud>
-		<sortInCloud>3</sortInCloud>
-		<expandComment>1</expandComment>
-		<lengthOfRecentNotice>40</lengthOfRecentNotice>
-		<lengthOfRecentEntry>30</lengthOfRecentEntry>
-		<lengthOfRecentComment>40</lengthOfRecentComment>
-		<lengthOfRecentTrackback>40</lengthOfRecentTrackback>
-		<lengthOfLink>40</lengthOfLink>
+		<recentEntries>4</recentEntries>							<!-- 사이드바의 최근글 표시 갯수 -->
+	<recentComments>5</recentComments>								<!-- 사이드바의 최근 댓글 표시 개수 -->
+		<recentTrackbacks>5</recentTrackbacks>						<!-- 사이드바의 최근 트랙백 표시 갯수 -->
+		<itemsOnGuestbook>5</itemsOnGuestbook>						<!-- 한페이지에 표시될 방명록 갯수 -->
+		<tagsInCloud>20</tagsInCloud>								<!-- 사이드바에 표시될 태그 갯수 -->
+		<sortInCloud>3</sortInCloud>								<!-- 태그 클라우드 표현 방식 (1:인기도순, 2:이름순, 3:랜덤) -->
+		<expandComment>1</expandComment>							<!-- 댓글영역 표현 방식 (0:감추기, 1:펼치기) -->
+		<lengthOfRecentNotice>40</lengthOfRecentNotice>				<!-- 최근 공지 표현될 글자수 -->
+		<lengthOfRecentEntry>30</lengthOfRecentEntry>				<!-- 최근 글 표현될 글자수 -->
+		<lengthOfRecentComment>40</lengthOfRecentComment>			<!-- 최근 댓글에 표현될 글자수 -->
+		<lengthOfRecentTrackback>40</lengthOfRecentTrackback>		<!-- 최근 트랙백에 표현될 글자수 -->
+		<lengthOfLink>40</lengthOfLink>								<!-- 링크에 표현될 글자수 -->
 		<commentMessage>
 			<none>0</none>
 			<single>1</single>
@@ -39,6 +42,7 @@
 		<contentWidth>725</contentWidth>
 		<toolbar>white</toolbar>
 	</default>
+	<!-- 홈커버 -->
 	<cover>
 		<item>
 			<name>post1</name>
@@ -61,14 +65,20 @@
 			<description><![CDATA[ 대표사진을 배경으로 한 목록을 출력합니다. ]]></description>
 		</item>
 	</cover>
-	<variables>
+	<!-- 옵션 정의 -->
+	<variables>	<!-- 추가 설정 -->
 		<variable>
-			<name>logoImage</name>
-			<label>로고 (높이 82px)</label>
-			<description></description>
-			<type>IMAGE</type>
-			<option></option>
-			<default></default>
+			<name>logoImage</name>									<!-- 치환자에서 사용할 이름 -->
+			<label>로고 (높이 82px)</label>							 <!-- 사용자에게 표시할 이름 --> 
+			<description></description>								<!-- 설명 -->
+			<type>IMAGE</type>										<!-- 타입 -->
+																	<!-- STRING: 문자 입력 -->
+																	<!-- SELECT: 옵션 선택 (옵션은 name, label, value 값을 가진 json객체로 정의)-->
+																	<!-- IMAGE: 이미지 url -->
+																	<!-- BOOL: true/false -->
+																	<!-- COLOR: 컬러값 (#000000) -->
+			<option></option>										<!-- max, min, select option등 값을 설정하는데 사용되는 정보(select 타입의 경우 필수) -->
+			<default></default>										<!-- 설정하지 않은 경우 기본 값 -->
 		</variable>
 		<variable>
 			<name>penelopeColorSet</name>
@@ -108,21 +118,13 @@
 			<default>Designed by Tistory.</default>
 		</variable>
 		<variable>
-			<name>snsFacebook</name>
-			<label>페이스북 링크</label>
-			<description></description>
-			<type>STRING</type>
-			<option></option>
-			<default></default>
-		</variable>
-		<variable>
-			<name>snsTwitter</name>
-			<label>트위터 링크</label>
+			<name>snsGitHub</name>
+			<label>깃허브 링크</label>
 			<description></description>
 			<type>STRING</type>
 			<option></option>
 			<default>#</default>
-		</variable>
+		</variable>	
 		<variable>
 			<name>snsInstagram</name>
 			<label>인스타그램 링크</label>
@@ -131,5 +133,31 @@
 			<option></option>
 			<default>#</default>
 		</variable>
+		<variable>
+			<name>snsYouTube</name>
+			<label>유튜브 링크</label>
+			<description></description>
+			<type>STRING</type>
+			<option></option>
+			<default>#</default>
+		</variable>
+		<variablegroup name="홈 배너1 (이미지 입력 필수)">
+			<variable>
+				<name>banner-1-image</name>
+				<label><![CDATA[ 배너1 이미지 ]]></label>
+				<description><![CDATA[ 첫번째 배너 이미지를 등록하세요. ]]></description>
+				<type>IMAGE</type>
+				<option></option>
+				<default></default>
+			</variable>
+			<variable>
+				<name>banner-1-text</name>
+				<label><![CDATA[ 배너1 문구 ]]></label>
+				<description><![CDATA[ 첫번째 배너에 들어갈 문구를 등록하세요. ]]></description>
+				<type>STRING</type>
+				<option></option>
+				<default></default>
+			</variable>
+		</variablegroup>
 	</variables>
 </skin>

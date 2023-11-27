@@ -12,16 +12,27 @@
 
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./images/style_webicon.css" />
-
+    <!-- Maplestory font -->
+    <link rel="preload" href="images/Maplestory-Light.woff2" as="font" type="font/woff2" crossorigin>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script src="./images/common.js"></script>    
     <!-- By Dexter -->
-    <script src="https://kit.fontawesome.com/968e631654.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/968e631654.js" crossorigin="anonymous"></script>    
     <!-- 본문 시작 목차 생성 jquery -->
     <script src="./images/jquery.toc.min.js"></script>
     <!-- tocbot-floating 목차 생성 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.22.0/tocbot.min.js" integrity="sha512-jIGXw0ZiI49sz1oSo/xFJt5b0HWdLKyO/xAVXcYT85PedVnep1ZvEFn1AzWnmu/ZELZhLyq+KZibjcgoVeIK+Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.22.0/tocbot.css" integrity="sha512-MiKzJ1SHUjeQpWOIKdj1LYmEdnPF076Zeq7en/98oFIfomw5MEbqJ2RhRl+4WHo1ciJyFjFigtgKzXOO50Psrg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @font-face {
+            font-family: 'Maplestory-Light';
+            src: local(Maplestory-Light), 
+                 url(./images/Maplestory-Light.woff2) format("woff2");
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+    </style>
 </head>
 
 <body id="[##_body_id_##]" class="[##_var_penelopeColorSet_##]">
@@ -35,7 +46,7 @@
                         <!-- area_menu -->
                         <div class="area_menu">                            
                             <nav class="menu_navigation">
-                                <!-- [##_blog_menu_##] -->
+                                <!-- 리스트 형식의 카테고리 -->
                                 [##_category_list_##]
                             </nav>
                             <div class="m_sidebar pc_blind">
@@ -57,15 +68,27 @@
                             </div>
                             
                             <ul class="list_sns">
-                                <s_if_var_snsFacebook>
-                                    <li><a href="[##_var_snsFacebook_##]" class="link_sns link_fb" target="_blank"><span class="blind">페이스북</span></a></li>
-                                </s_if_var_snsFacebook>
-                                <s_if_var_snsTwitter>
-                                    <li><a href="[##_var_snsTwitter_##]" class="link_sns link_twitter" target="_blank"><span class="blind">트위터</span></a></li>
-                                </s_if_var_snsTwitter>
+                                <s_if_var_snsGitHub>
+                                    <li>
+                                        <a href="[##_var_snsGitHub_##]" class="link_sns link_github" target="_blank">
+                                            <span class="blind">깃허브</span>
+                                        </a>
+                                    </li>
+                                </s_if_var_snsGitHub>
                                 <s_if_var_snsInstagram>
-                                    <li><a href="[##_var_snsInstagram_##]" class="link_sns link_insta" target="_blank"><span class="blind">인스타그램</span></a></li>
+                                    <li>
+                                        <a href="[##_var_snsInstagram_##]" class="link_sns link_insta" target="_blank">
+                                            <span class="blind">인스타그램</span>
+                                        </a>
+                                    </li>
                                 </s_if_var_snsInstagram>
+                                <s_if_var_snsYouTube>
+                                    <li>
+                                        <a href="[##_var_snsYouTube_##]" class="link_sns link_youtube" target="_blank">
+                                            <span class="blind">유튜브</span>
+                                        </a>
+                                    </li>
+                                </s_if_var_snsYouTube>
                             </ul>
 
                             <div class="box_visit">
@@ -87,6 +110,7 @@
                     </s_sidebar_element>
                 </s_sidebar>
             </aside>
+            
             <!-- container  / header에 btn_search 클릭하면 class에 search_on 추가(모바일에서만 작동) -->
             <div id="container">                
                 <header id="header">
@@ -120,13 +144,19 @@
                                 <button type="button" title="검색어 삭제" class="btn_search_del"></button>
                             </form>
                         </div>
-
                     </div>
                 </header>
-
-                <main id="main">                    
-                    <!-- 블로그 홈/목록 상단 치환자 -->
-                    [##_revenue_list_upper_##]                    
+                
+                <!-- 메인 배너 -->
+                <s_if_var_banner-1-image>
+                    <div class="main-banner">
+                        <div class="main-image" style="background-image: url(//t1.daumcdn.net/thumb/R1280x0/?fname=http://t1.daumcdn.net/brunch/service/user/2o6V/image/y836SgQSMlN252E8KDEGLm2lhDo.jpg);"></div>
+                        <div class="cover_inner"></div>
+                    </div>
+                </s_if_var_banner-1-image>
+                <main id="main"> 
+                    <!-- 광고 치환자 - 블로그 홈/목록 상단 치환자 -->                        
+                    [##_revenue_list_upper_##]                        
                     <!-- inner_index -->
                     <div class="inner_index">                        
                         <s_cover_group>
@@ -320,7 +350,7 @@
                                 <h2 class="title_category">[##_list_conform_##]</h2>
                             </div>
                         </s_list>                        
-                        <!-- category_list -->
+                        <!-- 기본 커버 - category_list -->
                         <div class="category_list index_type_common index_type_[##_var_penelopeListType_##]">
                             <ul class="list_[##_var_penelopeListType_##]">
                                 <!-- 글 그룹 치환자 -->
@@ -365,8 +395,7 @@
                                     <s_permalink_article_rep>
                                         <li class="category_content_area">
                                             <!-- area_view_content -->
-                                            <div class="area_view_content">
-                                                
+                                            <div class="area_view_content">                                                
                                                 <!-- article_content 본문 -->
                                                 <div class="article_content">
                                                     <div class="info_post">
@@ -435,7 +464,7 @@
                                                     <!-- area_comment -->
                                                     <div class="area_reply">
                                                         <s_rp>
-                                                          [##_comment_group_##]
+                                                        [##_comment_group_##]
                                                         </s_rp>
                                                     </div>
                                                     <!-- // area_comment -->
@@ -635,90 +664,95 @@
                     </div>
                     <!-- // inner_index -->                    
                 </main>
-
+                
                 <!-- aside -->
                 <aside class="sidebar mobile_blind">
-                    <div class="inner_sidebar thema_apply">
-                        <s_sidebar>
-                            <s_sidebar_element>
+                    <div class="outer_sidebar">
+                        <div class="inner_sidebar thema_apply">
+                            <s_sidebar>
                                 <!-- 인기포스트 -->
-                                <div class="related_posts">
-                                    <div class="related_type related_type_view">
-                                        <h2 class="title_related">인기포스트</h2>
-                                        <ul class="list_related">
-                                            <s_rctps_popular_rep>
-                                                <li>
-                                                    <a href="[##_rctps_rep_link_##]" class="link_related" <s_rctps_rep_thumbnail>style="background-image:url('[##_rctps_rep_thumbnail_##]')"</s_rctps_rep_thumbnail>>
-                                                        <span class="bg"></span>
-                                                        <span class="txt"><strong>[##_rctps_rep_title_##]</strong></span>
-                                                    </a>
-                                                </li>
-                                            </s_rctps_popular_rep>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </s_sidebar_element>
-
-                            <s_sidebar_element>
-                                <!-- 블로그 정보 -->
-                                <div class="about_me_pc">
-                                    <div class="box_sidebar about_me">
-                                        <div class="inbox">
-                                            <h3 class="title_sidebar">ABOUT ME</h3>
-                                            <p class="text_about">[##_desc_##]</p>
+                                <s_sidebar_element>
+                                    <div class="related_posts">
+                                        <div class="related_type related_type_view">
+                                            <h2 class="title_related">인기포스트</h2>
+                                            <ul class="list_related">
+                                                <s_rctps_popular_rep>
+                                                    <li>
+                                                        <a href="[##_rctps_rep_link_##]" class="link_related" <s_rctps_rep_thumbnail>style="background-image:url('[##_rctps_rep_thumbnail_##]')"</s_rctps_rep_thumbnail>>
+                                                            <span class="bg"></span>
+                                                            <span class="txt"><strong>[##_rctps_rep_title_##]</strong></span>
+                                                        </a>
+                                                    </li>
+                                                </s_rctps_popular_rep>
+                                            </ul>
                                         </div>
                                     </div>
-                                </div>
-                            </s_sidebar_element>
-
-                            <s_sidebar_element>
-                                <!-- 링크 -->
-                                <div class="box_sidebar">
-                                    <div class="inbox">
-                                        <h3 class="title_sidebar">LINK</h3>
-                                        <s_link_rep>
-                                            <a href="[##_link_url_##]" class="link_slink">[##_link_site_##]</a>
-                                        </s_link_rep>
+                                </s_sidebar_element>                                
+                                <s_sidebar_element>
+                                    <!-- 블로그 정보 -->
+                                    <div class="about_me_pc">
+                                        <div class="box_sidebar about_me">
+                                            <div class="inbox">
+                                                <h3 class="title_sidebar">ABOUT ME</h3>
+                                                <p class="text_about">[##_desc_##]</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </s_sidebar_element>
+                                </s_sidebar_element>
 
-                            <s_sidebar_element>
-                                <!-- 관리자 메뉴 -->
-                                <div class="box_sidebar sidebar_admin">
-                                    <div class="inbox">
-                                        <h3 class="title_sidebar">ADMIN</h3>
-                                        <a href="[##_owner_url_##]" class="admin">
-                                            <span class="blind">admin</span>
-                                        </a>
-                                        <a href="[##_owner_url_##]/entry/post" class="write">
-                                            <span class="blind">글쓰기</span>
-                                        </a>
+                                <s_sidebar_element>
+                                    <!-- 링크 -->
+                                    <div class="box_sidebar">
+                                        <div class="inbox">
+                                            <h3 class="title_sidebar">LINK</h3>
+                                            <s_link_rep>
+                                                <a href="[##_link_url_##]" class="link_slink">[##_link_site_##]</a>
+                                            </s_link_rep>
+                                        </div>
                                     </div>
-                                </div>
-                            </s_sidebar_element>
+                                </s_sidebar_element>
 
-                            <s_sidebar_element>
-                                <!-- 방문자수 -->
-                                <div class="box_sidebar visit_counter">
-                                    <div class="inbox">
-                                        <span class="total">[##_count_total_##]</span>
-                                        <span class="today">[##_count_today_##]</span>
-                                        <span class="yesterday">[##_count_yesterday_##]</span>
+                                <s_sidebar_element>
+                                    <!-- 관리자 메뉴 -->
+                                    <div class="box_sidebar sidebar_admin">
+                                        <div class="inbox">
+                                            <h3 class="title_sidebar">ADMIN</h3>
+                                            <a href="[##_owner_url_##]" class="admin">
+                                                <span class="blind">admin</span>
+                                            </a>
+                                            <a href="[##_owner_url_##]/entry/post" class="write">
+                                                <span class="blind">글쓰기</span>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                            </s_sidebar_element>
+                                </s_sidebar_element>
 
-                        </s_sidebar>
+                                <s_sidebar_element>
+                                    <!-- 방문자수 -->
+                                    <div class="box_sidebar visit_counter">
+                                        <div class="inbox">
+                                            <span class="total">[##_count_total_##]</span>
+                                            <span class="today">[##_count_today_##]</span>
+                                            <span class="yesterday">[##_count_yesterday_##]</span>
+                                        </div>
+                                    </div>
+                                </s_sidebar_element>
+                                
+                            </s_sidebar>
+                        </div>
                     </div>
                 </aside>
                 <!-- // aside -->
-
-                <!-- footer -->
-                [##_revenue_list_lower_##]
-                <footer id="footer">
-                    [##_var_footerCopyright_##]
-                </footer>
+                <!-- 광고 치환자 - 블로그 홈/목록 하단 -->
+                <div class="footer_outer">
+                    [##_revenue_list_lower_##]
+                    <!-- <div class="revenue_unit_outer">
+                    </div> -->
+                    <!-- footer -->
+                    <footer id="footer">
+                        [##_var_footerCopyright_##]
+                    </footer>                
+                </div>
                 <!-- // footer -->
 
             </div>
@@ -738,20 +772,21 @@
         <!-- // wrap -->
     </s_t3>
     <script src="./images/themeToggle.js>"></script>
+    <!-- 카테고리 접기/펼치기 -->
     <script type="text/javascript">
         $(function() {
-                $(".category_list").children("li").has("ul").addClass("cat-sub-menu"),
-                    $(".cat-sub-menu .link_item").append().addClass("cat-toggle"),
-                    $(".cat-sub-menu").each(function() {
-                        var c = $(this).children(".link_item"),
-                            d = c.attr("href");
-                        c.removeAttr("href"),
-                            $(this).children("ul").prepend(), c.children("span").appendTo(c.parent(".cat-sub-menu").find(".view-all"))
-                    }),
-                    $(".cat-toggle").click(function() {
-                        var c = $(this).parent(".cat-sub-menu");
-                        c.children("ul").toggle(250), c.toggleClass("expanded")
-                    })
+            $(".category_list").children("li").has("ul").addClass("cat-sub-menu"),
+                $(".cat-sub-menu .link_item").append().addClass("cat-toggle"),
+                $(".cat-sub-menu").each(function() {
+                    var c = $(this).children(".link_item"),
+                        d = c.attr("href");
+                    c.removeAttr("href"),
+                    $(this).children("ul").prepend(), c.children("span").appendTo(c.parent(".cat-sub-menu").find(".view-all"))
+                }),
+                $(".cat-toggle").click(function() {
+                    var c = $(this).parent(".cat-sub-menu");
+                    c.children("ul").toggle(250), c.toggleClass("expanded");
+                })
             });
     </script>
     <!-- 본문 시작 목차 생성 -->
@@ -802,10 +837,10 @@
             $('.toc').css('left', $('.article_content').width() + 50);
 
             var toc_top = $('.toc').offset().top - 103;
-            $(window).scroll(function() {       
+            $(window).scroll(function() {
                 if ($(this).scrollTop() >= toc_top) {                                        
                     $('.toc').addClass('toc-fixed');
-                    $('.toc').css('left', $('.article_view').offset().left + $('.article_content').width() + 50);
+                    $('.toc').css('left', $('.article_content').offset().left + $('.article_content').width() + 50);
                     $('.toc').removeClass('toc-absolute');
                 }
                 else {
@@ -821,7 +856,7 @@
                     $('.toc').css('left', $('.article_content').width() + 50);
                 }
                 else if ($(".toc").hasClass("toc-fixed")) { 
-                    $('.toc').css('left', $('.article_content').offset().left + $('.article_view').width() + 50);             
+                    $('.toc').css('left', $('.article_content').offset().left + $('.article_content').width() + 50);             
                 }
             });
         });
@@ -883,7 +918,8 @@
             }
             else if ($target.closest('.btn_search').length > 0) {                
             }
-            else if (($target.closest('.area_search').length == 0) && ($target.closest('.area_menu').length == 0)) {
+            else if (($target.closest('.area_search').length == 0) && 
+                     ($target.closest('.area_menu').length == 0)) {
                 $("#dimmed").remove();
             }
         });
@@ -894,10 +930,23 @@
             }
         });
     </script>
+    <script>
+        $(document).ready(function () {
+            var bannerHeight= $('.main-banner').height();
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > bannerHeight) {                                        
+                    $('.main-banner').css("display", "none");                    
+                }
+                else {
+                    $('.main-banner').css("display", "block");                      
+                }
+            });
+        });      
+    </script>
 </body>
 <script>
     $('.article_content').find('table').each(function (idx, el) {
-        $(el).wrap('<div class="table-overflow">')
+        $(el).wrap('<div class="table-overflow">');
     })
 </script>
 </html>
