@@ -569,12 +569,19 @@ html, body {
 
 .inner_header {
   position: relative;
-  max-width: 1600px;
+  /* max-width: 1600px; */
   height: 168px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   text-align: center;
   box-sizing: border-box;
   padding-left: var(--nav-width);
+  z-index: 5;
+  font-size: 8px;  
+}
+
+.inner_header.fixed_header {
+  background-color: var(--color-bg-element2-op);
+  transition: 2s ease;
 }
 
 .inner_header .logo {
@@ -605,6 +612,10 @@ html, body {
   text-overflow: ellipsis;
   white-space: nowrap;
   text-align: center;  
+}
+
+.inner_header .area_search .inp_search:focus {
+  outline: none;  
 }
 
 @media screen and (max-width: 743px) {
@@ -652,7 +663,8 @@ html, body {
 }
 
 /* ----- main ----- */
-#main {  
+#main {
+  /* margin-top: 232px;   */
   background-color: var(--color-bg-page1);
   position: relative;
   padding-top: 50px; 
@@ -3041,16 +3053,7 @@ html, body {
 
   .inner_header .area_search form {
     padding: 0 20px;
-  }
-
-  .inner_header .area_search .inp_search {
-    width: 100%;
-    height: 38px;
-    margin-top: 16px;
-    background: none;
-    border-bottom: 1px solid #e4e4e4;
-    font-size: 16px;
-  }
+  } 
 
   .inner_header .area_search .btn_search_del {
     position: absolute;
@@ -3419,6 +3422,7 @@ html[theme="light"] {
   --color-primary1: #12B886;
   --color-primary2: #20C997;
   --color-primary-op: rgba(18, 184, 134, 0.5);
+  --color-bg-element2-op: rgba(248, 249, 250, 0.9);
 }
 
 html[theme="dark"] {
@@ -3447,6 +3451,7 @@ html[theme="dark"] {
   --color-primary1: #96F2D7;
   --color-primary2: #63E6BE;
   --color-primary-op: rgba(150, 242, 215, 0.5);
+  --color-bg-element2-op: rgba(30, 30, 30, 0.9);
 }
 
 :root {

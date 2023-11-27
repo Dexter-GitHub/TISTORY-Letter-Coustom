@@ -7,9 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-
     <link rel="alternate" type="application/rss+xml" title="[##_title_##]" href="[##_rss_url_##]" />
-
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./images/style_webicon.css" />
     <!-- Maplestory font -->
@@ -31,7 +29,7 @@
             font-weight: normal;
             font-style: normal;
             font-display: swap;
-        }
+        }        
     </style>
 </head>
 
@@ -114,20 +112,29 @@
             <!-- container  / header에 btn_search 클릭하면 class에 search_on 추가(모바일에서만 작동) -->
             <div id="container">                
                 <header id="header">
-                    <div class="inner_header">
+                    <div class="inner_header" 
+                        <s_if_var_banner-1-image>
+                            style="height: 80px;"
+                        </s_if_var_banner-1-image>>
                         <h1 class="logo">
-                            <a href="[##_blog_link_##]" title="[##_title_##]" class="link_logo" <s_if_var_logoImage>style="background-image:url('[##_var_logoImage_##]')"</s_if_var_logoImage>>
+                            <!-- _blog_link_: 블로그 url, _title_: 블로그 제목 -->
+                            <a href="[##_blog_link_##]" title="[##_title_##]" class="link_logo" 
+                                <s_if_var_logoImage>
+                                    style="background-image:url('[##_var_logoImage_##]')"
+                                </s_if_var_logoImage>>
                                 <span class="blind">[##_title_##]</span>
                                 <s_not_var_logoImage>
                                     <span class="title_text">[##_title_##]</span>
                                 </s_not_var_logoImage>
                             </a>
                         </h1>
+                        <!-- 메뉴 접기/펼치기 버튼 -->
                         <button type="button" class="btn_menu">
                             <span class="icon-Menu"></span>
                             <span class="icon-Close"></span>
                             <span class="blind">메뉴</span>
                         </button>
+                        <!-- 검색 버튼-->
                         <button class="btn_search">
                             <span class="icon-Search"></span>
                             <span class="blind">검색</span>
@@ -154,7 +161,10 @@
                         <div class="cover_inner"></div>
                     </div>
                 </s_if_var_banner-1-image>
-                <main id="main"> 
+                <main id="main" 
+                    <s_if_var_banner-1-image>
+                        style="margin-top: 320px;"
+                    </s_if_var_banner-1-image>> 
                     <!-- 광고 치환자 - 블로그 홈/목록 상단 치환자 -->                        
                     [##_revenue_list_upper_##]                        
                     <!-- inner_index -->
@@ -171,12 +181,17 @@
                                                     <div class="article_content">
                                                         <div class="thumbnail_zone">
                                                             <a href="[##_cover_item_url_##]" class="thumbnail_post"
-                                                                <s_cover_item_thumbnail>style="background-image:url('[##_cover_item_thumbnail_##]')"</s_cover_item_thumbnail>></a>
+                                                                <s_cover_item_thumbnail>
+                                                                    style="background-image:url('[##_cover_item_thumbnail_##]')"
+                                                                </s_cover_item_thumbnail>>
+                                                            </a>
                                                         </div>
 
-                                                        <a href="[##_cover_item_url_##]" class="link_title"><strong
-                                                                class="title_post">[##_cover_item_title_##]</strong></a>
-
+                                                        <a href="[##_cover_item_url_##]" class="link_title">
+                                                            <strong class="title_post">
+                                                                [##_cover_item_title_##]
+                                                            </strong>
+                                                        </a>
                                                         <a href="[##_cover_item_url_##]" class="link_article">
                                                             <div class="content_post">
                                                                 <p class="txt_post">
@@ -934,11 +949,27 @@
         $(document).ready(function () {
             var bannerHeight= $('.main-banner').height();
             $(window).scroll(function() {
-                if ($(this).scrollTop() > bannerHeight) {                                        
+                if ($(this).scrollTop() > (bannerHeight + 100)) {                                        
                     $('.main-banner').css("display", "none");                    
                 }
                 else {
-                    $('.main-banner').css("display", "block");                      
+                    $('.main-banner').css("display", "block");
+                }
+
+                if ($(this).scrollTop() > bannerHeight) {                    
+                    $('.inner_header').addClass("fixed_header");
+                    $('.inner_header').css({
+                        "position": "fixed",
+                        "width": "100%",                                                                   
+                        "transition": ".5s ease",    
+                    });
+                }
+                else {
+                    $('.inner_header').removeClass("fixed_header");
+                    $('.inner_header').css({
+                        "position": "relative",         
+                        "transition": "none",               
+                    });             
                 }
             });
         });      
