@@ -107,8 +107,7 @@
                         <!-- // area_menu -->
                     </s_sidebar_element>
                 </s_sidebar>
-            </aside>
-            
+            </aside>            
             <!-- container  / header에 btn_search 클릭하면 class에 search_on 추가(모바일에서만 작동) -->
             <div id="container">                
                 <header id="header">
@@ -152,23 +151,48 @@
                             </form>
                         </div>
                     </div>
-                </header>
-                
-                <!-- 메인 배너 -->
+                </header>                
+                <!-- 메인 배너 -->                
                 <s_if_var_banner-1-image>
                     <div class="main-banner">
-                        <div class="main-image" style="background-image: url(//t1.daumcdn.net/thumb/R1280x0/?fname=http://t1.daumcdn.net/brunch/service/user/2o6V/image/y836SgQSMlN252E8KDEGLm2lhDo.jpg);"></div>
+                        <div class="main-image" style="background-image: url([##_var_banner-1-image_##]);">
+                            <!-- 배너 문구 -->                            
+                            <s_if_var_banner-1-text>
+                                <div class="banner-inner">
+                                    <span class="banner-text">
+                                        [##_var_banner-1-text_##]
+                                    </span>
+                                </div>
+                            </s_if_var_banner-1-text>
+                        </div>
                         <div class="cover_inner"></div>
                     </div>
-                </s_if_var_banner-1-image>
+                </s_if_var_banner-1-image>                
                 <main id="main" 
                     <s_if_var_banner-1-image>
                         style="margin-top: 320px;"
-                    </s_if_var_banner-1-image>> 
+                    </s_if_var_banner-1-image>>                 
+                    <div>
+                        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                            <!-- definition of special elements (SVG 필터) -->
+                            <defs>
+                                <!-- svg 파일내 xml 요소 -->
+                                <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                            </defs>
+                            <!-- 그룹 태그 -->
+                            <g class="parallax">
+                                <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+                                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                                <use xlink:href="#gentle-wave" x="48" y="7" />
+                            </g>
+                        </svg>
+                    </div>
                     <!-- 광고 치환자 - 블로그 홈/목록 상단 치환자 -->                        
-                    [##_revenue_list_upper_##]                        
+                    [##_revenue_list_upper_##]                                         
                     <!-- inner_index -->
                     <div class="inner_index">                        
+                        <!-- 커버 그룹 치환자 -->
                         <s_cover_group>
                             <s_cover_rep>
                                 <s_cover name='gallery'>
@@ -359,7 +383,7 @@
                                 </s_cover>
                             </s_cover_rep>
                         </s_cover_group>
-
+                        <!-- 리스트 그룹 치환자 -->
                         <s_list>
                             <div class="category_list index_type_common index_type_horizontal">
                                 <h2 class="title_category">[##_list_conform_##]</h2>
@@ -371,7 +395,7 @@
                                 <!-- 글 그룹 치환자 -->
                                 <s_article_rep>
                                     <!-- 인덱스 페이지일 때만 표시되는 영역 -->
-                                    <s_index_article_rep>
+                                    <s_index_article_rep>                                        
                                         <li class="list_horizontal_item">
                                             <div class="article_content">
                                                 <div class="thumbnail_zone">
@@ -406,89 +430,103 @@
                                         <!-- // category_list -->
                                     </s_index_article_rep>
                                     
-                                    <!-- 퍼머링크 페이지일 때만 표시되는 영역 -->
+                                    <!-- 퍼머링크 페이지일 때만 표시되는 영역 -->                                    
                                     <s_permalink_article_rep>
-                                        <li class="category_content_area">
-                                            <!-- area_view_content -->
-                                            <div class="area_view_content">                                                
-                                                <!-- article_content 본문 -->
-                                                <div class="article_content">
-                                                    <div class="info_post">
-                                                        <a href="[##_article_rep_link_##]" class="link_title">
-                                                            <!-- 제목 _article_rep_title_ -->
-                                                            <div class="title_view">
-                                                                [##_article_rep_title_##]
+                                        <div class="article-banner">                                            
+                                            <div class="article-image" <s_article_rep_thumbnail>style="background-image: url([##_article_rep_thumbnail_raw_url_##]);"</s_article_rep_thumbnail>>
+                                                <div class="article-banner-inner">
+                                                    <a href="[##_article_rep_category_link_##]" class="link_category thema_apply">
+                                                        <span class="category">
+                                                            <!-- 카테고리 이름 -->
+                                                            [##_article_rep_category_##]
+                                                        </span>
+                                                    </a>   
+                                                    <a href="[##_article_rep_link_##]" class="link_title">
+                                                        <!-- 제목 _article_rep_title_ -->
+                                                        <span class="title_view">
+                                                            [##_article_rep_title_##]
+                                                        </span>
+                                                    </a>
+                                                    <span class="date">
+                                                        <!-- 글 발행 날짜/시간 (yyyy.m.d.) -->
+                                                        [##_article_rep_date_##]
+                                                    </span>
+                                                </div>                                                
+                                            </div>
+                                            <div class="cover_inner"></div>
+                                        </div>       
+                                        <div class="article-inner">                                            
+                                            <li class="category_content_area">
+                                                <!-- area_view_content -->
+                                                <div class="area_view_content">                               
+                                                    <!-- article_content 본문 -->
+                                                    <div class="article_content">
+                                                        <div class="info_post">
+                                                            <!-- <a href="[##_article_rep_link_##]" class="link_title">                                                                
+                                                                <div class="title_view">
+                                                                    [##_article_rep_title_##]
+                                                                </div>
+                                                            </a> -->
+                                                            <!-- 타이틀 아래 글 정보 -->
+                                                            <!-- <div class="view_info_post">
+                                                                <div>                                                                                                                                     
+                                                                    <!-- 글수정 버튼 
+                                                                    [##_s_ad_isolation_##]
+                                                                </div>                                                             
+                                                                <!-- 글과 관련된 태그가 출력되는 영역 
+                                                                <s_tag_label>                                                        
+                                                                    <div class="area_tag">                                                                        
+                                                                        <div class="tag_content">
+                                                                            <!-- 태그 반복 출력 
+                                                                            [##_tag_label_rep_##]
+                                                                        </div>
+                                                                    </div>                                                        
+                                                                </s_tag_label>                                                            
+                                                            </div> -->
+                                                        </div>
+                                                        <!-- tocbot -->
+                                                        <div class="toc"></div>
+                                                        <!-- 본문 내용 영역 -->
+                                                        <div class="article_view">                                                        
+                                                            <!-- 본문 내용 -->
+                                                            [##_article_rep_desc_##]
+                                                        </div>                                                    
+
+                                                        <!-- 카테고리 글 더보기 영역 -->
+                                                        <s_article_related>
+                                                            <!-- related_type_view -->
+                                                            <div class="related_type related_type_view">
+                                                                <h2 class="title_related">관련글 <a href="[##_article_rep_category_link_##]"
+                                                                        class="link_add thema_apply">관련글 더보기</a></h2>
+                                                                <ul class="list_related">
+                                                                    <s_article_related_rep>
+                                                                        <li>
+                                                                            <a href="[##_article_related_rep_link_##]"
+                                                                                class="link_related" <s_article_related_rep_thumbnail>style="background-image:url('[##_article_related_rep_thumbnail_link_##]') !important"</s_article_related_rep_thumbnail>>
+                                                                                <span class="bg"></span>
+                                                                                <span class="txt"><strong>[##_article_related_rep_title_##]</strong></span>
+                                                                            </a>
+                                                                        </li>
+                                                                    </s_article_related_rep>
+                                                                </ul>
                                                             </div>
-                                                        </a>
-                                                        <!-- 타이틀 아래 글 정보 -->
-                                                        <div class="view_info_post">
-                                                            <div>
-                                                                <a href="[##_article_rep_category_link_##]" class="link_category thema_apply">
-                                                                    <span class="category">
-                                                                        <!-- 카테고리 이름 -->
-                                                                        [##_article_rep_category_##]
-                                                                    </span>
-                                                                </a>
-                                                                <span class="date">
-                                                                    <!-- 글 발행 날짜/시간 (yyyy.m.d.) -->
-                                                                    [##_article_rep_simple_date_##]
-                                                                </span>
-                                                                <!-- 글수정 버튼 -->
-                                                                [##_s_ad_isolation_##]
-                                                            </div>                                                             
-                                                            <!-- 글과 관련된 태그가 출력되는 영역 -->
-                                                            <s_tag_label>                                                        
-                                                                <div class="area_tag">                                                                        
-                                                                    <div class="tag_content">
-                                                                        <!-- 태그 반복 출력 -->
-                                                                        [##_tag_label_rep_##]
-                                                                    </div>
-                                                                </div>                                                        
-                                                            </s_tag_label>                                                            
-                                                        </div>
-                                                    </div>
-                                                    <!-- tocbot -->
-                                                    <div class="toc"></div>
-                                                    <!-- 본문 내용 영역 -->
-                                                    <div class="article_view">                                                        
-                                                        <!-- 본문 내용 -->
-                                                        [##_article_rep_desc_##]
-                                                    </div>                                                    
+                                                            <!-- // related_type_view -->
+                                                        </s_article_related>
 
-                                                    <!-- 카테고리 글 더보기 영역 -->
-                                                    <s_article_related>
-                                                        <!-- related_type_view -->
-                                                        <div class="related_type related_type_view">
-                                                            <h2 class="title_related">관련글 <a href="[##_article_rep_category_link_##]"
-                                                                    class="link_add thema_apply">관련글 더보기</a></h2>
-                                                            <ul class="list_related">
-                                                                <s_article_related_rep>
-                                                                    <li>
-                                                                        <a href="[##_article_related_rep_link_##]"
-                                                                            class="link_related" <s_article_related_rep_thumbnail>style="background-image:url('[##_article_related_rep_thumbnail_link_##]') !important"</s_article_related_rep_thumbnail>>
-                                                                            <span class="bg"></span>
-                                                                            <span class="txt"><strong>[##_article_related_rep_title_##]</strong></span>
-                                                                        </a>
-                                                                    </li>
-                                                                </s_article_related_rep>
-                                                            </ul>
+                                                        <!-- area_comment -->
+                                                        <div class="area_reply">
+                                                            <s_rp>
+                                                            [##_comment_group_##]
+                                                            </s_rp>
                                                         </div>
-                                                        <!-- // related_type_view -->
-                                                    </s_article_related>
+                                                        <!-- // area_comment -->
 
-                                                    <!-- area_comment -->
-                                                    <div class="area_reply">
-                                                        <s_rp>
-                                                        [##_comment_group_##]
-                                                        </s_rp>
                                                     </div>
-                                                    <!-- // area_comment -->
+                                                    <!-- article_content -->
 
                                                 </div>
-                                                <!-- article_content -->
-
-                                            </div>
-                                        </li>
+                                            </li>
+                                        </div>                                 
                                     </s_permalink_article_rep>
                                 </s_article_rep>
                             </ul>
@@ -524,7 +562,6 @@
                             <s_permalink_article_rep>
                                 <!-- area_view_content -->
                                 <div class="area_view_content">
-
                                     <!-- article_content -->
                                     <div class="article_content">
                                         <div class="info_post">
@@ -533,7 +570,6 @@
                                                     class="category">[##_article_rep_category_##]</span></a>
                                             <span class="date">[##_article_rep_date_##]</span>
                                         </div>
-
                                         <!-- 본문 내용 영역 -->
                                         <div class="article_view">                                            
                                             <!-- 본문 내용 (치환자 적용 영역) -->
@@ -547,7 +583,6 @@
 
                                     </div>
                                     <!-- article_content -->
-
                                 </div>
                             </s_permalink_article_rep>
                         </s_article_protected>
@@ -648,7 +683,9 @@
                                 </s_local_spot_rep>
                                 <s_local_info_rep>
                                     <div class="info" style="margin-left: [##_local_info_depth_##]px">
-                                        <a href="[##_local_info_link_##]">[##_local_info_title_##]</a>
+                                        <a href="[##_local_info_link_##]">
+                                            [##_local_info_title_##]
+                                        </a>
                                     </div>
                                 </s_local_info_rep>
                             </section>
@@ -664,13 +701,23 @@
                             <!-- area_paging -->
                             <div class="area_paging">
                                 <div class="inner_paging thema_apply">
-                                    <a [##_prev_page_##] class="link_page link_prev [##_no_more_prev_##]"><span class="icon-Keyboard-Arrow---Left"></span><span class="blind">이전</span></a>
+                                    <a [##_prev_page_##] class="link_page link_prev [##_no_more_prev_##]">
+                                        <span class="icon-Keyboard-Arrow---Left"></span>
+                                        <span class="blind">
+                                            이전
+                                        </span>
+                                    </a>
                                     <div class="paging_num">
                                         <s_paging_rep>
-                                            <a [##_paging_rep_link_##] class="link_num">[##_paging_rep_link_num_##]</a>
+                                            <a [##_paging_rep_link_##] class="link_num">
+                                                [##_paging_rep_link_num_##]
+                                            </a>
                                         </s_paging_rep>
                                     </div>
-                                    <a [##_next_page_##] class="link_page link_next [##_no_more_next_##]"></span><span class="blind">다음</span><span class="icon-Keyboard-Arrow---Right"></span></a>
+                                    <a [##_next_page_##] class="link_page link_next [##_no_more_next_##]">
+                                        <span class="blind">다음</span>
+                                        <span class="icon-Keyboard-Arrow---Right"></span>
+                                    </a>
                                 </div>
                             </div>
                             <!-- // area_paging -->
@@ -807,7 +854,7 @@
     <!-- 본문 시작 목차 생성 -->
     <script>
         $(document).ready(function() {
-            $('#toc').toc({content: ".tt_article_useless_p_margin", headings: "h2, h3, h4"});
+            $('#toc').toc({content: ".tt_article_useless_p_margin", headings: "h2, h3"});
         });
 
         $(".book-toc > p").before().click(function() {
@@ -825,7 +872,7 @@
     <!-- tocbot 생성 -->
     <script>
         var content = document.querySelector('.article_view');
-        var headings = content.querySelectorAll('h1, h2, h3, h4, h5, h6, h7');
+        var headings = content.querySelectorAll('h1, h2, h3');
         var headingMap = {};
 
         Array.prototype.forEach.call(headings, function (heading) {
@@ -843,7 +890,7 @@
         tocbot.init({
             tocSelector: '.toc',
             contentSelector: '.article_view',
-            headingSelector: 'h2, h3, h4',
+            headingSelector: 'h2, h3',
             hasInnerContainers: false,            
         });
 
@@ -851,11 +898,11 @@
             $('.toc').addClass('toc-absolute');
             $('.toc').css('left', $('.article_content').width() + 50);
 
-            var toc_top = $('.toc').offset().top - 103;
-            $(window).scroll(function() {
+            var toc_top = $('.toc').offset().top - 145;
+            $(window).scroll(function() {              
                 if ($(this).scrollTop() >= toc_top) {                                        
                     $('.toc').addClass('toc-fixed');
-                    $('.toc').css('left', $('.article_content').offset().left + $('.article_content').width() + 50);
+                    $('.toc').css('left', $('.article_content').offset().left + $('.article_content').width() + 30);
                     $('.toc').removeClass('toc-absolute');
                 }
                 else {
@@ -871,7 +918,7 @@
                     $('.toc').css('left', $('.article_content').width() + 50);
                 }
                 else if ($(".toc").hasClass("toc-fixed")) { 
-                    $('.toc').css('left', $('.article_content').offset().left + $('.article_content').width() + 50);             
+                    $('.toc').css('left', $('.article_content').offset().left + $('.article_content').width() + 30);             
                 }
             });
         });
