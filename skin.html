@@ -181,9 +181,9 @@
                             </defs>
                             <!-- 그룹 태그 -->
                             <g class="parallax">
-                                <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
-                                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
-                                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                                <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.5)" />
+                                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.3)" />
+                                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.1)" />
                                 <use xlink:href="#gentle-wave" x="48" y="7" />
                             </g>
                         </svg>
@@ -210,7 +210,6 @@
                                                                 </s_cover_item_thumbnail>>
                                                             </a>
                                                         </div>
-
                                                         <a href="[##_cover_item_url_##]" class="link_title">
                                                             <strong class="title_post">
                                                                 [##_cover_item_title_##]
@@ -1044,10 +1043,25 @@
                     <span class="red btn"></span>
                     <span class="yellow btn"></span>
                     <span class="green btn"></span>                    
-                </div>`;
-            
+                </div>`;            
             codeBlock.innerHTML = codeHeader + codeBody;
         }
+    </script>
+    <!-- new 포스팅 아이콘 변경 스크립트 -->
+    <script>
+        $('img[alt="N"]').each(function () {
+            $(this).replaceWith('<img src="./images/new.png" class="newpost" style="width: 24px; height: 24px; padding-left: 10px; vertical-align: baseline;">');
+        });
+    </script>
+    <!-- 카테고리 글수 괄호 제거 -->
+    <script type="text/javascript">                    
+         const c_cnt = document.getElementsByClassName("c_cnt");           
+        for (var i = 1; i < c_cnt.length; i++) {
+            let pattern = /[()]/gi;                
+            let str = c_cnt[i].innerHTML;                
+            let n = str.replace(pattern, '');
+            c_cnt[i].innerHTML = n;
+        }            
     </script>
 </body>
 <script>

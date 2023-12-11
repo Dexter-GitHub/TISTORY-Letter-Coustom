@@ -1,5 +1,7 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+@import url('https://fonts.cdnfonts.com/css/menlo');
+/* @import url('https://db.onlinewebfonts.com/c/9f94dc20bb2a09c15241d3a880b7ad01?family=Menlo+Regular'); */
 
 /* basic */
 article, aside, canvas, details, figcaption, figure, footer, header, main, menu, nav, section, summary {
@@ -404,10 +406,10 @@ html, body {
 }
 
 .area_menu .list_gnb .link_gnb {
-  display: block;
+  /* display: block;
   padding: 15px 0 14px 0;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: bold; */
 }
 
 .area_menu .list_gnb .link_gnb:hover {
@@ -694,6 +696,7 @@ html, body {
   background-size: cover;
   background-position: 40% 40%;
   height: var(--banner-height);
+  background-repeat: no-repeat;
 }
 
 .banner-inner {  
@@ -976,9 +979,10 @@ body:not(#tt-body-page) .inner_index {
 .article_view h2,
 .article_view h3,
 .article_view h4 {
-  margin: 24px 0;
+  margin: 24px 0;  
   font-weight: 500;
   color: var(--color-text1);
+  font-family: Maplestory-Light;
 }
 
 .article_view h1 {
@@ -987,8 +991,7 @@ body:not(#tt-body-page) .inner_index {
 }
 
 .article_view h2 {
-  font-size: 26px;
-  line-height: 1.38;
+  font-size: 26px;  
 }
 
 .article_view h3 {
@@ -1044,14 +1047,15 @@ body:not(#tt-body-page) .inner_index {
   margin-bottom: 6px;
   font-size: 16px;
   line-height: 1.75;
-  color: rgba(0, 0, 0, 0.87);
+  /* color: rgba(0, 0, 0, 0.87); */
   word-break: break-all;
 }
 
-.article_view figure {
+/* 사용시 본문 내용중 이미지 출력 안됨 */
+/* .article_view figure {
   display: none !important;
   margin: 0;
-}
+} */
 
 .article_view table {
   border-collapse: collapse;
@@ -1088,12 +1092,13 @@ body:not(#tt-body-page) .inner_index {
   margin: 30px 0;
 }
 
-/* 코드 블럭 */
+/* ----- 코드 블럭 ----- */
 pre {
   position: relative;  
   overflow: hidden;    
 }
 
+/* 코드블럭 언어 표시 */
 pre::after {
   content: attr(data-ke-language);
   position: absolute;
@@ -1101,7 +1106,8 @@ pre::after {
   right: 20px;
   color: #cfd2d1;
   font-size: 14px;
-  font-weight: bold;
+  font-weight: bold;  
+  font-family: 'Menlo', IBMPlexSansKR;
 }
 
 .cpp::after {
@@ -1120,12 +1126,10 @@ pre::after {
 .hljs {
   display: flex !important;
   flex-direction: column;
-  padding: 5px !important;
-  font-size: 14px;
+  padding: 5px !important;  
   border-radius: 8px;  
-  background-color: #282C34 !important;
-  font-family: IBMPlexSansKR, Menlo, Courier, monospace;
-  margin: 0 !important;    
+  background-color: #282C34 !important;  
+  margin: 0 !important;      
 }
 
 .hljs .code-header {
@@ -1168,7 +1172,11 @@ pre::after {
   background-color: #282C34;
   color: #cfd2d1;
   overflow: scroll;
-  white-space: pre;  
+  white-space: pre;
+  line-height: 15;  
+  font-size: .875rem;
+  font-family: 'Menlo';  
+  font-weight: normal;
 }
 
 .hljs .code-body::-webkit-scrollbar {
@@ -1176,10 +1184,18 @@ pre::after {
   height: 5px;  /* 가로 스크롤바 높이 */
 }
 
-.hljs .code-body::-webkit-scrollbar-thumb {
-  /* background-color: rgb(1 2 3 / 80%); */
-  background: linear-gradient(to right, #FF8A8A, #F874C7, #5AC6FF, #68F98A);
+.hljs .code-body::-webkit-scrollbar-thumb {  
   border-radius: 4px;
+}
+
+/* 수평 스크롤바 */
+.hljs .code-body::-webkit-scrollbar-thumb:horizontal {
+  background: linear-gradient(to right, #FF8A8A, #F874C7, #5AC6FF, #68F98A);
+}
+
+/* 수직 스크롤바 */
+.hljs .code-body::-webkit-scrollbar-thumb:vertical {
+  background: linear-gradient(to bottom, #FF8A8A, #F874C7, #5AC6FF, #68F98A);
 }
 
 /* 스크롤바 트랙 (스크롤이 움직이는 영역) */
@@ -1261,7 +1277,7 @@ pre::after {
 .cpp .hljs .hljs-meta,
 .cpp .hljs .hljs-meta-keyword,
 .cpp .hljs .hljs-keyword {
-  color: #C678DD
+  color: #C791E9
 }
 
 .cpp .hljs .hljs-meta-string {
@@ -1269,7 +1285,11 @@ pre::after {
 }
 
 .cpp .hljs .hljs-title {
-  color: #5490C4;
+  color: #5DA4DF;
+}
+
+.cpp .hljs .hljs-built_in {
+  color: #5DA4DF;
 }
 
 .cpp .hljs .hljs-number {
@@ -1277,11 +1297,24 @@ pre::after {
 }
 
 .cpp .hljs .hljs-comment {
-  color: #7F848E;
+  color: #529A54;
 }
 
 .cpp .hljs .hljs-string {
-  color: #98C379;
+  color: #BFE38B;
+}
+
+.css .hljs .hljs-selector-class,
+.css .hljs .hljs-attribute {
+  color: #D19A66;
+}
+
+.css .hljs .hljs-number {
+  color: #BE6069;  
+}
+
+.css .hljs .hljs-selector-tag {
+  color: #D86972;
 }
 
 code {
@@ -2316,8 +2349,6 @@ code {
 }
 
 /* ----- 카테고리 웹아이콘 ----- */
-
-
 /* category - Dev Diary */
  .tt_category li ul :nth-child(1) a:not(.link_sub_item)::before {  
   content: '\f02d';  
@@ -2386,6 +2417,21 @@ code {
   animation: categoryAnimate 1s linear;   
 }
 
+/* 카테고리 글 개수 */
+.category_list .c_cnt {
+  color: var(--color-primary1);
+  border: solid 1px var(--color-primary1);
+  margin-left: 10px;
+  border-radius: 10px;
+  font-size: 0.5rem;
+  width: 25px;
+  height: 12px;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  line-height: 12px; 
+}
+
 /* 버튼 화살표 */
 .cat-toggle .c_cnt::after {
   font-family: "fontawesome";    
@@ -2405,18 +2451,24 @@ code {
 }
 
 /* 카테고리 2단 아이템 */
-.tt_category .category_list .sub_category_list {  
+.tt_category .category_list .sub_category_list {    
   margin-left: 50px;
   font-size: 8px;             /* 카테고리 2단 아이콘 크기 */
 }
 
+.tt_category .category_list .sub_category_list li {
+  display: flex;
+  align-items: center;  
+  height: 45px;
+}
+
 .tt_category .category_list .sub_category_list .link_sub_item {
-  display: inline-block;
-  width: 90%;
+  display: flex;  
+  align-items: center;
   font-family: Maplestory-Light;
   font-weight: normal;
   font-size: 12px;
-  color: var(--color-text3);  /* 카테고리 2단 글자색 */
+  color: var(--color-text3);  /* 카테고리 2단 글자색 */    
 }
 
 .tt_category .category_list .sub_category_list li::before {
@@ -2560,6 +2612,11 @@ code {
 /* category - IoT Module & Sensor */
 .tt_category li ul li:nth-child(13) ul li:nth-child(13) a::before {   
   content: '\f135';  
+}
+
+/* 카테고리 new 포스팅 아이콘 */
+.tt_category .category_list .link_item .newpost {
+  /* background-color: #fff; */
 }
 /* category - by dexter end */
 
@@ -2808,7 +2865,8 @@ code {
 /* Style-1 서식 스타일 */
 .contents_style .style-1 {
   border-bottom: 2px solid var(--color-border2);
-  padding-bottom: 7px;
+  padding-bottom: 11px;
+  font-family: Maplestory-Light;
 }
 
 .contents_style .style-1 > span {
@@ -2828,6 +2886,11 @@ code {
 } */
 
 /* 본문 제목 스타일 - by Dexter end */
+/* 본문 내용 스타일 */
+.contents_style p,
+.contents_style ol {
+  font-family: Maplestory-Light;
+} 
 
 /* toc(Table Of Contents) - by Dexter [23-11-16] */
 .toc {    
@@ -2843,6 +2906,7 @@ code {
 .toc-absolute {
   position: absolute;   
   top: 255px; 
+  left: 830px !important;
   /* right: calc((100% - 850px)/2 - 250px);   */
 }
 
