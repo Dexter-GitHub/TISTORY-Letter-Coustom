@@ -32,12 +32,14 @@
         }        
     </style>
 </head>
-
 <body id="[##_body_id_##]" class="[##_var_penelopeColorSet_##]">
-    <script src="./images/theme.js"></script>    
+    <script src="./images/theme.js"></script>     
     <s_t3>
         <!-- warp / 테마 변경시 thema_xxx 변경 -->
         <div id="wrap" class="[##_var_penelopeColorSet_##]">
+            <div class="progress-bar">
+                <div class="fill"></div>
+            </div>   
             <aside>
                 <s_sidebar>
                     <s_sidebar_element>
@@ -107,9 +109,10 @@
                         <!-- // area_menu -->
                     </s_sidebar_element>
                 </s_sidebar>
-            </aside>            
-            <!-- container  / header에 btn_search 클릭하면 class에 search_on 추가(모바일에서만 작동) -->
-            <div id="container">                
+            </aside>    
+            <!-- container / header에 btn_search 클릭하면 class에 search_on 추가(모바일에서만 작동) -->
+            <div id="container">            
+                           
                 <header id="header">
                     <div class="inner_header" 
                         <s_if_var_banner-1-image>
@@ -171,7 +174,7 @@
                 <main id="main" 
                     <s_if_var_banner-1-image>
                         style="margin-top: 320px;"
-                    </s_if_var_banner-1-image>>                 
+                    </s_if_var_banner-1-image>>    
                     <div>
                         <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
                             <!-- definition of special elements (SVG 필터) -->
@@ -1001,7 +1004,8 @@
                     $('.main-banner').css("display", "block");
                 }
 
-                if ($(this).scrollTop() > bannerHeight) {                    
+                if ($(this).scrollTop() > bannerHeight) {       
+                    $('.progress-bar').addClass("fixed-progress-bar");
                     $('.inner_header').addClass("fixed_header");
                     $('.inner_header').css({
                         "position": "fixed",
@@ -1010,6 +1014,7 @@
                     });
                 }
                 else {
+                    $('.progress-bar').removeClass("fixed-progress-bar");
                     $('.inner_header').removeClass("fixed_header");
                     $('.inner_header').css({
                         "position": "relative",         
@@ -1062,6 +1067,21 @@
             let n = str.replace(pattern, '');
             c_cnt[i].innerHTML = n;
         }            
+    </script>
+    <script>
+        $(document).ready(function () {
+            const e = document?.scrollingElement?.scrollHeight;
+            const t = (window.scrollY + window.innerHeight) / e * 100;
+            const n = document.querySelector(".progress-bar .fill");
+            n?.style && (n.style.width = `${t}%`);   
+
+            document.addEventListener("scroll", function() {
+                const e = document?.scrollingElement?.scrollHeight;
+                const t = (window.scrollY + window.innerHeight) / e * 100;
+                const n = document.querySelector(".progress-bar .fill");
+                n?.style && (n.style.width = `${t}%`);                
+            });  
+        });
     </script>
 </body>
 <script>

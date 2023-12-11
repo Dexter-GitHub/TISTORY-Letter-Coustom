@@ -3,8 +3,7 @@ $(function() {
         $(el).wrap('<div class="table-overflow">')
     });
 
-    function menuToggle()
-    {
+    function menuToggle() {
         $('#wrap').toggleClass('menu_on');
         $('.btn_menu').toggleClass('btn_menu_off');
 
@@ -14,8 +13,7 @@ $(function() {
         }
     }
 
-    function searchToggle()
-    {
+    function searchToggle() {
         $('#container').toggleClass('search_on');
         $('.area_search').toggle();
 
