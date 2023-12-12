@@ -4,63 +4,25 @@
 /* @import url('https://db.onlinewebfonts.com/c/9f94dc20bb2a09c15241d3a880b7ad01?family=Menlo+Regular'); */
 
 /* basic */
-article,
-aside,
-canvas,
-details,
-figcaption,
-figure,
-footer,
-header,
-main,
-menu,
-nav,
-section,
-summary {
+article, aside, canvas, details, figcaption, figure,
+footer, header, main, menu, nav, section, summary {
     display: block;
 }
 
-body,
-button,
-dd,
-dl,
-dt,
-fieldset,
-form,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-input,
-legend,
-li,
-ol,
-p,
-select,
-table,
-td,
-textarea,
-th,
-ul {
+body, button, dd, dl, dt, fieldset, form, h1, h2,
+h3, h4, h5, h6, input, legend, li, ol, p, select,
+table, td, textarea, th, ul {
     margin: 0;
     padding: 0
 }
 
-body,
-button,
-input,
-select,
-table,
-textarea {
+body, button, input, select, table, textarea {
     /* color: #333; */
     color: var(--color-text2);
     font-family: "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", Dotum, '돋움', "Noto Sans KR", "Nanum Gothic", 'Lato', Helvetica, sans-serif;
 }
 
-button,
-input {
+button, input {
     border: 0;
     border-radius: 0
 }
@@ -70,13 +32,11 @@ img {
     border: 0;
 }
 
-ol,
-ul {
+ol, ul {
     list-style: none
 }
 
-address,
-em {
+address, em {
     font-style: normal
 }
 
@@ -429,7 +389,7 @@ body {
     z-index: 99;    
 }
 
-.progress-bar {
+.progress-bar.fixed-progress-bar {
     background-color: var(--color-bg-element2-op);
 }
 
@@ -725,6 +685,11 @@ body {
 
 .inner_header .btn_menu_off .icon-Close {
     display: block;
+}
+
+/* 티스토리 관리자 버튼 */
+.menu_toolbar .btn_tool_type1 {
+    top: 6px !important;
 }
 
 /* ----- main ----- */
@@ -1154,244 +1119,6 @@ body:not(#tt-body-page) .inner_index {
 
 .article_view hr {
     margin: 30px 0;
-}
-
-/* ----- 코드 블럭 ----- */
-pre {
-    position: relative;
-    overflow: hidden;
-}
-
-/* 코드블럭 언어 표시 */
-pre::after {
-    content: attr(data-ke-language);
-    position: absolute;
-    top: 9px;
-    right: 20px;
-    color: #cfd2d1;
-    font-size: 14px;
-    font-weight: bold;
-    font-family: 'Menlo', IBMPlexSansKR;
-}
-
-.cpp::after {
-    content: "C/C++" !important;
-    color: #35CD4B;
-}
-
-.css::after {
-    color: #2993C7;
-}
-
-.html::after {
-    color: #F67C47;
-}
-
-.hljs {
-    display: flex !important;
-    flex-direction: column;
-    padding: 5px !important;
-    border-radius: 8px;
-    background-color: #282C34 !important;
-    margin: 0 !important;
-}
-
-.hljs .code-header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    max-width: 772px;
-    display: flex;
-    align-items: center;
-    padding: 14px;
-    background-color: #393B46;
-    border-radius: 8px 8px 0 0;
-}
-
-.hljs .code-header .btn {
-    border-radius: 50%;
-    width: 15px;
-    height: 15px;
-    margin: 0 5px;
-}
-
-.hljs .code-header .btn.red {
-    background-color: #F5655B;
-}
-
-.hljs .code-header .btn.yellow {
-    background-color: #F6BD3B;
-}
-
-.hljs .code-header .btn.green {
-    background-color: #43C645;
-}
-
-.hljs .code-body {
-    max-height: 600px;
-    margin-top: 43px;
-    border-radius: 0 0 8px 8px;
-    padding: 15px 5px 5px 5px;
-    background-color: #282C34;
-    color: #cfd2d1;
-    overflow: scroll;
-    white-space: pre;
-    line-height: 15;
-    font-size: .875rem;
-    font-family: 'Menlo';
-    font-weight: normal;
-}
-
-.hljs .code-body::-webkit-scrollbar {
-    width: 5px;
-    /* 세로 스크롤자 넓이 */
-    height: 5px;
-    /* 가로 스크롤바 높이 */
-}
-
-.hljs .code-body::-webkit-scrollbar-thumb {
-    border-radius: 4px;
-}
-
-/* 수평 스크롤바 */
-.hljs .code-body::-webkit-scrollbar-thumb:horizontal {
-    background: linear-gradient(to right, #FF8A8A, #F874C7, #5AC6FF, #68F98A);
-}
-
-/* 수직 스크롤바 */
-.hljs .code-body::-webkit-scrollbar-thumb:vertical {
-    background: linear-gradient(to bottom, #FF8A8A, #F874C7, #5AC6FF, #68F98A);
-}
-
-/* 스크롤바 트랙 (스크롤이 움직이는 영역) */
-.hljs .code-body::-webkit-scrollbar-track {
-    margin: 10px;
-    border-radius: 4px;
-}
-
-.hljs .code-body::-webkit-scrollbar-corner {
-    display: none;
-}
-
-.hljs .line {
-    /* 카운터 값을 1씩 증가 (카운터가 선언되어 있지 않으면 먼저 선언 후 1증가) */
-    counter-increment: line-idx;
-    line-height: 1.5;
-}
-
-.hljs .line::before {
-    content: counter(line-idx);
-    width: 24px;
-    display: inline-block;
-    text-align: right;
-    margin-right: 16px;
-    font-size: 0.8rem;
-    color: #747A7A;
-}
-
-.hljs .line:hover {
-    background-color: #262830;
-}
-
-.hljs .line:hover::before {
-    color: #CFD2D1;
-}
-
-.hljs .copy-btn {
-    border: .5px solid #fff;
-    border-radius: 5px;
-    position: absolute;
-    top: 60px;
-    right: -35px;
-    cursor: pointer;
-    background-color: #282C34;
-    color: #cfd2d1;
-    width: 30px;
-    height: 30px;
-    font-family: "fontawesome";
-}
-
-.hljs .copy-btn::before {
-    content: '\f328';
-    font-size: 16px;
-    width: 100%;
-    height: 100%;
-    color: #cfd2d1;
-}
-
-.hljs .copy-btn:active {
-    width: 70px;
-    padding-bottom: 4px;
-}
-
-.hljs .copy-btn:active::before {
-    content: 'copied !';
-    font-size: 10px;
-}
-
-.hljs:hover .copy-btn {
-    right: 10px;
-    transition: right ease-out .2s;
-}
-
-.hljs:not(:hover) .copy-btn {
-    right: -35px;
-    transition: right ease-out .2s;
-}
-
-.cpp .hljs .hljs-meta,
-.cpp .hljs .hljs-meta-keyword,
-.cpp .hljs .hljs-keyword {
-    color: #C791E9
-}
-
-.cpp .hljs .hljs-meta-string {
-    color: #83A66C;
-}
-
-.cpp .hljs .hljs-title {
-    color: #5DA4DF;
-}
-
-.cpp .hljs .hljs-built_in {
-    color: #5DA4DF;
-}
-
-.cpp .hljs .hljs-number {
-    color: #D19A66;
-}
-
-.cpp .hljs .hljs-comment {
-    color: #529A54;
-}
-
-.cpp .hljs .hljs-string {
-    color: #BFE38B;
-}
-
-.css .hljs .hljs-selector-class,
-.css .hljs .hljs-attribute {
-    color: #D19A66;
-}
-
-.css .hljs .hljs-number {
-    color: #BE6069;
-}
-
-.css .hljs .hljs-selector-tag {
-    color: #D86972;
-}
-
-code {
-    background-color: var(--color-bg-element4);
-    padding: 0.3rem;
-    border-radius: 5px;
-    margin: 0 5px;
-    color: var(--color-primary1);
-    font-weight: bold;
-    font-size: 14px;
-    font-family: 'Menlo', Maplestory-Light;
 }
 
 @media screen and (max-width: 743px) {
@@ -2945,6 +2672,16 @@ code {
     display: none;
 }
 
+/* 본문 링크 */
+figure[data-ke-type='opengraph'] a {
+    border-radius: 8px;    
+    overflow: hidden;
+}
+
+figure[data-ke-type='opengraph'] .og-title {
+    color: var(--color-text5) !important;
+}
+
 /* 본문 제목 스타일 - by Dexter */
 /* By Dexter */
 .contents_style {
@@ -2962,13 +2699,36 @@ code {
     font-family: Maplestory-Light;
 }
 
-.contents_style .style-1>span {
+.contents_style .style-1 > span {
     font-size: 26px;
     border-bottom: 2px solid var(--color-primary1);
     padding-bottom: 9px;
 }
 
-/* .contents_style h2::after {  
+.contents_style .cmd-style {
+    border: none !important;
+    border-radius: 10px;
+    background-color: #282C34 !important;
+    font-size: 14px;
+    color: #fff;
+}
+
+.contents_style .cmd-style > p:not(:last-child) {
+    padding-bottom: 8px !important;
+}
+
+.contents_style .blockquote-style-1 {
+    border-left: 5px solid var(--color-primary1) !important;
+    background-color: #282C34 !important;
+    margin: 20px auto 20px 0 !important;
+    padding-left: 20px !important;    
+}
+
+.contents_style .blockquote-style-1 > p {
+    color: #fff !important;
+}
+
+/* .contents_style h2::after {
   height: 1px;
   width: 100%;
   background-color: red;

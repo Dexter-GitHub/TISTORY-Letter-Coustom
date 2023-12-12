@@ -1,0 +1,244 @@
+@charset "UTF-8";
+
+/* ----- 코드 블럭 ----- */
+pre {
+    position: relative;
+    overflow: hidden;
+}
+
+/* 코드블럭 언어 표시 */
+pre::after {
+    content: attr(data-ke-language);
+    position: absolute;
+    top: 9px;
+    right: 20px;
+    color: #cfd2d1;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Menlo', IBMPlexSansKR;
+}
+
+/* 언어별 언어표시 텍스트 색상 */
+.cpp::after {
+    content: "C/C++" !important;
+    color: #35CD4B;
+}
+
+.css::after {
+    color: #2993C7;
+}
+
+.html::after {
+    color: #F67C47;
+}
+
+.hljs {
+    display: flex !important;
+    flex-direction: column;
+    padding: 5px !important;
+    border-radius: 8px;
+    background-color: #282C34 !important;
+    margin: 0 !important;
+}
+
+.hljs .code-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 772px;
+    display: flex;
+    align-items: center;
+    padding: 14px;
+    background-color: #393B46;
+    border-radius: 8px 8px 0 0;
+}
+
+.hljs .code-header .btn {
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    margin: 0 5px;
+}
+
+.hljs .code-header .btn.red {
+    background-color: #F5655B;
+}
+
+.hljs .code-header .btn.yellow {
+    background-color: #F6BD3B;
+}
+
+.hljs .code-header .btn.green {
+    background-color: #43C645;
+}
+
+.hljs .code-body {
+    max-height: 600px;
+    margin-top: 43px;
+    border-radius: 0 0 8px 8px;
+    padding: 15px 5px 5px 5px;
+    background-color: #282C34;
+    color: #cfd2d1;
+    overflow: scroll;
+    white-space: pre;
+    line-height: 15;
+    font-size: .875rem;
+    font-family: 'Menlo';
+    font-weight: normal;
+    tab-size: 4;    /* 들여쓰기 사이즈 지정 */
+}
+
+/* 스크롤바 StyleSheet */
+.hljs .code-body::-webkit-scrollbar {
+    width: 5px;
+    /* 세로 스크롤자 넓이 */
+    height: 5px;
+    /* 가로 스크롤바 높이 */
+}
+
+.hljs .code-body::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+}
+
+/* 수평 스크롤바 */
+.hljs .code-body::-webkit-scrollbar-thumb:horizontal {
+    background: linear-gradient(to right, #FF8A8A, #F874C7, #5AC6FF, #68F98A);
+}
+
+/* 수직 스크롤바 */
+.hljs .code-body::-webkit-scrollbar-thumb:vertical {
+    background: linear-gradient(to bottom, #FF8A8A, #F874C7, #5AC6FF, #68F98A);
+}
+
+/* 스크롤바 트랙 (스크롤이 움직이는 영역) */
+.hljs .code-body::-webkit-scrollbar-track {
+    margin: 10px;
+    border-radius: 4px;
+}
+
+.hljs .code-body::-webkit-scrollbar-corner {
+    display: none;
+}
+
+.hljs .line {
+    /* 카운터 값을 1씩 증가 (카운터가 선언되어 있지 않으면 먼저 선언 후 1증가) */
+    counter-increment: line-idx;
+    line-height: 1.5;
+}
+
+.hljs .line::before {
+    content: counter(line-idx);
+    width: 24px;
+    display: inline-block;
+    text-align: right;
+    margin-right: 16px;
+    font-size: 0.8rem;
+    color: #747A7A;
+}
+
+.hljs .line:hover {
+    background-color: #262830;
+}
+
+.hljs .line:hover::before {
+    color: #CFD2D1;
+}
+
+.hljs .copy-btn {
+    border: .5px solid #fff;
+    border-radius: 5px;
+    position: absolute;
+    top: 60px;
+    right: -35px;
+    cursor: pointer;
+    background-color: #282C34;
+    color: #cfd2d1;
+    width: 30px;
+    height: 30px;
+    font-family: "fontawesome";
+}
+
+.hljs .copy-btn::before {
+    content: '\f328';
+    font-size: 16px;
+    width: 100%;
+    height: 100%;
+    color: #cfd2d1;
+}
+
+.hljs .copy-btn:active {
+    width: 70px;
+    padding-bottom: 4px;
+}
+
+.hljs .copy-btn:active::before {
+    content: 'copied !';
+    font-size: 10px;
+}
+
+/* 코드블럭에 mouse hover 했을때 표시 */
+.hljs:hover .copy-btn {
+    right: 20px;    /* hover했을때 표시 위치 */
+    transition: right ease-out .2s;
+}
+
+.hljs:not(:hover) .copy-btn {
+    right: -35px;
+    transition: right ease-out .2s;
+}
+
+.cpp .hljs .hljs-meta,
+.cpp .hljs .hljs-meta-keyword,
+.cpp .hljs .hljs-keyword {
+    color: #C791E9
+}
+
+.cpp .hljs .hljs-meta-string {
+    color: #83A66C;
+}
+
+.cpp .hljs .hljs-title {
+    color: #5DA4DF;
+}
+
+.cpp .hljs .hljs-built_in {
+    color: #5DA4DF;
+}
+
+.cpp .hljs .hljs-number {
+    color: #D19A66;
+}
+
+.cpp .hljs .hljs-comment {
+    color: #529A54;
+}
+
+.cpp .hljs .hljs-string {
+    color: #BFE38B;
+}
+
+.css .hljs .hljs-selector-class,
+.css .hljs .hljs-attribute {
+    color: #D19A66;
+}
+
+.css .hljs .hljs-number {
+    color: #BE6069;
+}
+
+.css .hljs .hljs-selector-tag {
+    color: #D86972;
+}
+
+/* <code>태그에 대한 StyleSheet */
+code {
+    background-color: var(--color-bg-element4);
+    padding: 0.3rem 0.6rem;
+    border-radius: 5px;
+    margin: 0 5px;
+    color: var(--color-primary1);
+    font-weight: bold;
+    font-size: 14px;
+    font-family: 'Menlo', Maplestory-Light;
+}
