@@ -191,6 +191,7 @@
                             </g>
                         </svg>
                     </div>
+                    
                     <!-- 광고 치환자 - 블로그 홈/목록 상단 치환자 -->                        
                     [##_revenue_list_upper_##]                                         
                     <!-- inner_index -->
@@ -236,6 +237,7 @@
                                     </div>
                                     <!-- // index_type_gallery -->
                                 </s_cover>
+
                                 <s_cover name='post1'>
                                     <!-- index_type_post  -->
                                     <div class="index_type_common index_type_post index_type_post_line4">
@@ -434,6 +436,7 @@
                                     
                                     <!-- 퍼머링크 페이지일 때만 표시되는 영역 -->                                    
                                     <s_permalink_article_rep>
+                                        <!-- 본문 상단 배너 -->
                                         <div class="article-banner">                                            
                                             <div class="article-image" <s_article_rep_thumbnail>style="background-image: url([##_article_rep_thumbnail_raw_url_##]);"</s_article_rep_thumbnail>>
                                                 <div class="article-banner-inner">
@@ -449,10 +452,15 @@
                                                             [##_article_rep_title_##]
                                                         </span>
                                                     </a>
-                                                    <span class="date">
-                                                        <!-- 글 발행 날짜/시간 (yyyy.m.d.) -->
-                                                        [##_article_rep_date_##]
-                                                    </span>
+                                                    <div class="article-info-box">
+                                                        <span class="author">
+                                                            [##_article_rep_author_##]&nbsp;&nbsp;
+                                                        </span>
+                                                        <span class="date">
+                                                            <!-- 글 발행 날짜/시간 (yyyy.m.d.) -->
+                                                            [##_article_rep_date_##]
+                                                        </span>
+                                                    </div>
                                                 </div>                                                
                                             </div>
                                             <div class="cover_inner"></div>
@@ -516,16 +524,100 @@
                                                         </s_article_related>
 
                                                         <!-- area_comment -->
-                                                        <div class="area_reply">
+                                                        <div class="area_reply">                                                            
+                                                            <!-- 댓글로 접근시 이 영역 내부의 치환자가 출력됨 -->
                                                             <s_rp>
-                                                            [##_comment_group_##]
+                                                                <!-- 기본 댓글 치환자 -->
+                                                                <!-- [##_comment_group_##] -->                                                                
+                                                                <s_rp_count>
+                                                                    <span>[##_article_rep_rp_cnt_##]</span>
+                                                                </s_rp_count>
+                                                                <div class="commentWrite">
+                                                                    <s_rp_member>
+                                                                        <s_rp_guest>                                                                            
+                                                                        </s_rp_guest>
+                                                                    </s_rp_member> 
+                                                                    <!-- 댓글을 달기 위한 입력폼 출력 -->
+                                                                    <s_rp_input_form>
+                                                                        <p>
+                                                                            <textarea name="[##_rp_input_comment_##]" placeholder="여러분의 댓글은 큰 힘이 됩니다."></textarea>
+                                                                        </p>
+                                                                        <div class="btn-group-box">
+                                                                            <input id="secret" class="checkbox" type="checkbox" name="[##_rp_input_is_secet_##]"/>
+                                                                            <label for="secret"></label>
+                                                                            <button type="submit" value="" onclick="[##_rp_onclick_submit_##]"/></button>
+                                                                        </div>
+                                                                    </s_rp_input_form>
+                                                                </div>
+                                                                <!-- 등록된 '댓글' 리스트를 출력할 영역 -->                                                                
+                                                                <s_rp_container>                                                                    
+                                                                    <ol>
+                                                                        <!-- '댓글' 리스트의 반복열 -->
+                                                                        <s_rp_rep>                                                                            
+                                                                            <!-- 댓글의 고유 ID -->
+                                                                            <li id="[##_rp_rep_id_##]">
+                                                                                <!-- 댓글의 글의 목록에 반복되는 스타일 + admin 아이디 앞에 아이콘 -->
+                                                                                <div class="[##_rp_rep_class_##]">
+                                                                                    <!-- 댓글 작성자의 프로필 이미지 -->
+                                                                                    <span class="image" style="background-image: url([##_rp_rep_logo_##])"></span>
+                                                                                    <div class="box-content">
+                                                                                        <div class="box-content-inner">
+                                                                                            <!-- _rp_rep_name_ 글쓴사람 -->
+                                                                                            <span class="name">[##_rp_rep_name_##]</span>
+                                                                                            <!-- 글 내용 -->
+                                                                                            <p>[##_rp_rep_desc_##]</p>     
+                                                                                            <div class="rep-info-box">
+                                                                                                <!-- 글쓴 날짜 -->
+                                                                                                <span>[##_rp_rep_date_##] · </span>
+                                                                                                <!-- 답글 삭제 온클릭 이벤트 -->
+                                                                                                <a class="modify" href="#" onclick="[##_rp_rep_onclick_delete_##]"></a>
+                                                                                                <!-- 답글 추가 온클릭 이벤트 -->
+                                                                                                <a class="write" href="#" onclick="[##_rp_rep_onclick_reply_##]"></a>
+                                                                                            </div>      
+                                                                                        </div>                                                                              
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!-- '댓글'의 댓글 리스트를 출력할 영역 -->
+                                                                                <s_rp2_container>
+                                                                                    <ul>
+                                                                                        <!-- '댓글' 댓글 리스트의 반복열 -->
+                                                                                        <s_rp2_rep>
+                                                                                            <!-- 댓글의 고유 ID -->
+                                                                                            <li id="[##_rp_rep_id_##]">
+                                                                                                <!-- 댓글의 글의 목록에 반복되는 스타일 + admin 아이디 앞에 아이콘 -->
+                                                                                                <div class="[##_rp_rep_class_##]">                                                                                                    
+                                                                                                    <!-- 댓글 작성자의 프로필 이미지 -->
+                                                                                                    <span class="image" style="background-image: url([##_rp_rep_logo_##])"></span>
+                                                                                                    <div class="box-content">
+                                                                                                        <div class="box-content-inner">
+                                                                                                            <!-- _rp_rep_name_ 글쓴사람 -->
+                                                                                                            <span class="name">[##_rp_rep_name_##]</span>
+                                                                                                            <!-- 글 내용 -->
+                                                                                                            <p>[##_rp_rep_desc_##]</p>     
+                                                                                                            <div class="rep-info-box">
+                                                                                                                <!-- 글쓴 날짜 -->
+                                                                                                                <span>[##_rp_rep_date_##] · </span>
+                                                                                                                <!-- 답글 삭제 온클릭 이벤트 -->
+                                                                                                                <a class="modify" href="#" onclick="[##_rp_rep_onclick_delete_##]"></a>
+                                                                                                                <!-- 답글 추가 온클릭 이벤트 -->
+                                                                                                                <a class="write" href="#" onclick="[##_rp_rep_onclick_reply_##]"></a>
+                                                                                                            </div>                                                                                    
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                        </s_rp2_rep>
+                                                                                    </ul>
+                                                                                </s_rp2_container>
+                                                                            </li>
+                                                                        </s_rp_rep>
+                                                                    </ol>
+                                                                </s_rp_container>
                                                             </s_rp>
                                                         </div>
                                                         <!-- // area_comment -->
-
                                                     </div>
                                                     <!-- article_content -->
-
                                                 </div>
                                             </li>
                                         </div>                                 
@@ -575,9 +667,8 @@
                                         <div class="article_view">                                            
                                             <!-- 본문 내용 (치환자 적용 영역) -->
                                             <form class="protected_form" onsubmit="[##_article_dissolve_##]">
-                                                <p>보호되어 있는 글입니다. 내용을 보시려면 비밀번호를 입력하세요.</p>
-                                                <input type="password" id="[##_article_password_##]" name="[##_article_password_##]"
-                                                header                                   value="" placeholder="비밀번호" />
+                                                <p>보호되어 있는 글입니다. 내용을 보시려면 비밀번호를 입력하세요.</p>                                                
+                                                <input type="password" id="[##_article_password_##]" name="[##_article_password_##]" header value="" placeholder="비밀번호" />
                                                 <button type="submit">확인</button>
                                             </form>
                                         </div>

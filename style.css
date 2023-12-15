@@ -810,7 +810,7 @@ body:not(#tt-body-page) .inner_index {
     background-color: var(--color-primary1);
     border-radius: 15px;
     padding: 8px 20px;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
 }
 
 .article-banner-inner .link_category .category {
@@ -831,20 +831,35 @@ body:not(#tt-body-page) .inner_index {
     z-index: 5;
 }
 
-.article-banner-inner .date {
+.article-banner-inner .article-info-box {
     font-family: Maplestory-Light;
-    font-size: 20px;
-    margin-top: 25px;
-    color: #fff;
+    font-size: 18px;
     position: relative;
     z-index: 5;
+    margin-top: 25px;
     margin-bottom: 50px;
+}
+
+.article-banner-inner .author {
+    margin-right: 5px;
+    color: var(--color-primary1); 
+}
+
+.article-banner-inner .author::before {
+    font-family: "fontawesome";
+    font-size: 18px;
+    margin-right: 5px;         
+    content: '\f4ff';
+}
+
+.article-banner-inner .date { 
+    color: #fff; 
 }
 
 .article-banner-inner .date::before {
     font-family: "fontawesome";
-    font-size: 20px;
-    margin-right: 10px;
+    font-size: 18px;
+    margin-right: 5px;
     content: '\f073';
 }
 
@@ -1268,8 +1283,12 @@ body:not(#tt-body-page) .inner_index {
         min-height: 40px;
     }
 }
-
 /* // main - index_type_post */
+
+/* 광고 */
+.outer-wrapper.wide.assetless {
+    background-color: var(--color-page1) !important;
+}
 
 /* main - index_type_gallery */
 .index_type_gallery {
@@ -1800,6 +1819,12 @@ body:not(#tt-body-page) .inner_index {
     padding: 3.5px 1rem;
 }
 
+/* 파일 첨부 박스 */
+figure.fileblock .filename,
+figure.fileblock .size {
+    color: var(--color-text1) !important;
+}
+
 .area_view_content .area_tag .tag_content a:hover {
     /* color: #333; */
     opacity: 0.7;
@@ -1809,7 +1834,270 @@ body:not(#tt-body-page) .inner_index {
   margin-bottom: 0;
 } */
 
-/* area_reply */
+/* ------ area_reply - 댓글 ----- */
+/* ------ 댓글 Dexter 커스텀 ------ */
+.area_reply {
+    font-family: Maplestory-Light;
+    font-size: 1rem;    
+}
+
+.area_reply .commentStartline {
+    margin: 15px 0;
+    border-bottom : 1.5px dashed var(--color-border2);
+}
+
+.area_reply .commentStartline span {
+    color: var(--color-primary1);
+}
+
+.area_reply .commentWrite {  
+    margin-top: 15px;  
+    border: 1px solid var(--color-border1);
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 10px 15px 0 15px;
+}
+
+.area_reply .commentWrite form .btn-group-box {
+    margin-bottom: 5px;
+    display: flex;     
+}
+
+.area_reply .commentWrite form .btn-group-box input[type="checkbox"] { 
+    display: none;
+    cursor: pointer;
+}
+
+.area_reply .commentWrite form .btn-group-box input[type="checkbox"] + label {
+    font-family: "fontawesome";
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary1);
+    width: 40px;
+    height: 40px;
+    position: relative;
+    cursor: pointer;
+}
+
+.area_reply .commentWrite form .btn-group-box input[type="checkbox"] + label::after {    
+    content: '\f3c1';
+}
+
+.area_reply .commentWrite form .btn-group-box input[type="checkbox"]:checked + label::after {    
+    content: '\f023';
+}
+
+.area_reply .commentWrite form p textarea[name="comment"] {
+    border: none;
+    font-family: Maplestory-Light;
+    font-size: 1rem;
+    width: 100%;
+    min-height: 100px;
+    background-color: transparent;
+    resize: none;    
+    outline: none;
+}
+
+.area_reply .commentWrite form button {    
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.area_reply .commentWrite form button::before {
+    font-family: "fontawesome";
+    content: '\f1d8';
+    font-size: 18px;
+    color: var(--color-primary1);
+}
+/* 프로필 이미지 */
+.area_reply .image {
+    display: block;
+    position: relative;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border-radius: 50px;
+    background-position: 50% 50%;
+    background-size: cover;    
+}
+
+.area_reply ol li:not(:last-child) {
+    padding: 30px 0;
+}
+
+/* 댓글 구분 라인 */
+.area_reply ol > li {    
+    border-bottom: 1.5px dashed var(--color-border2);
+}
+
+.area_reply ol li div {
+    display: flex;
+    flex-direction: row;   
+}
+
+.area_reply ol li ul li {
+    margin-top: 15px;    
+}
+
+.area_reply ol li .rp_admin {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.area_reply ol li .rp_general .image {
+    margin-right: 15px;
+}
+
+.area_reply ol li .rp_admin .image {
+    margin-left: 15px;
+}
+
+/* 댓글 본문 영역 */
+.area_reply ol li div .box-content {    
+    min-width: 300px;    
+    position: relative;
+}
+
+.area_reply ol li div .box-content .box-content-inner {
+    display: flex;
+    flex-direction: column;    
+    font-family: Maplestory-Light;
+    border: 1px solid var(--color-border1);
+    border-radius: 10px;
+    font-size: 1rem;
+    width: 100%;    
+    padding: 1rem 1rem 2.5rem 1rem;
+    overflow: hidden;
+    position: relative;
+}
+
+/* 네임 태그 */
+.area_reply ol li div .name {
+    font-family: Maplestory-Light;
+    font-size: 0.8rem;
+    width: fit-content;
+    border-radius: 10px;
+    background-color: var(--color-primary1);
+    margin-bottom: 15px;
+    text-align: center;
+    color: var(--color-button-text);
+    padding: 5px 10px;
+}
+
+.area_reply ol li div .name::before {
+    font-family: "fontawesome";
+    font-size: 0.8rem;
+    margin-right: 8px;
+    color: var(--color-button-text);
+}
+
+.area_reply ol li .rp_general .name::before {
+    content: '\f007';
+}
+
+.area_reply ol li .rp_admin .name::before {
+    content: '\f521';
+}
+
+.area_reply ol li div .name a {
+    color: var(--color-button-text);
+}
+
+.area_reply ol li .rp_admin .name,
+.area_reply ol li .rp_admin p {
+    margin-left: auto;
+}
+
+.area_reply ol li .rp_admin p {
+    word-break: break-all;
+}
+
+/* 댓글 정보 */
+.area_reply ol li div .rep-info-box {
+    position: absolute;
+    left: 0;
+    bottom: 0;    
+    width: 100%;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    color: var(--color-button-text);
+    background-color: var(--color-primary1);
+}
+
+/* 댓글 날짜-신고 */
+.area_reply ol li div .rep-info-box > span {    
+    font-size: 0.7rem;
+    margin-right: 5px;
+}
+
+.area_reply ol li div .rep-info-box > span a {
+    font-family: Maplestory-Light;
+    color: var(--color-button-text); 
+    margin-left: 5px;   
+}
+
+.area_reply ol li div .rep-info-box .modify {
+    margin-right: 8px;
+}
+
+.area_reply ol li div .rep-info-box .modify::after {    
+    font-family: "fontawesome";
+    content: '\f4b3';
+    font-size: 0.8rem;
+    color: var(--color-button-text);
+}
+
+.area_reply ol li div .rep-info-box .write::after {    
+    font-family: "fontawesome";
+    content: '\f7f5';
+    font-size: 0.8rem;
+    color: var(--color-button-text);
+}
+
+/* 댓글 Guest 말풍선 꼬리 */
+.area_reply ol li .rp_general .box-content:after {
+	content: '';
+	position: absolute;
+	left: 1px; 
+	top: 40px;
+	width: 0;
+	height: 0;
+	border: 8px solid transparent;
+	border-right-color: var(--color-border1);    
+	border-left: 0;
+	border-top: 0;
+	margin-top: -20px;
+	margin-left: -9px;
+}
+
+/* 댓글 admin 말풍선 꼬리 */
+.area_reply ol li .rp_admin .box-content::before {
+	content: '';
+	position: absolute;
+	right: 1px;
+	top: 40px;
+	width: 0;
+	height: 0;
+	border: 8px solid transparent;
+	border-left-color: var(--color-border1);    
+	border-right: 0;
+	border-top: 0;
+	margin-top: -20px;
+	margin-right: -9px;
+}
+
+.tistoryProfileLayerTrigger {
+    display: none !important;
+}
+
+/* ------ 댓글 Letter 원본 ------ */
 .area_reply {
     width: 100%;
     margin-top: 26px;
@@ -2103,6 +2391,10 @@ body:not(#tt-body-page) .inner_index {
 }
 
 #main .google-auto-placed {
+    display: none;
+}
+
+.sidebar .google-auto-placed {
     display: none;
 }
 
@@ -2711,6 +3003,7 @@ figure[data-ke-type='opengraph'] .og-title {
     background-color: #282C34 !important;
     font-size: 14px;
     color: #fff;
+    margin: 10px 0;
 }
 
 .contents_style .cmd-style > p:not(:last-child) {
@@ -3654,8 +3947,7 @@ figure[data-ke-type='opengraph'] .og-title {
 .fa-solid {
     font-family: 'fontawesome';
     font-size: 1rem;
-    line-height: 1.5rem;
-    ;
+    line-height: 1.5rem;    
     font-weight: 900;
     -webkit-font-smoothing: antialiased;
     display: var(--fa-display, inline-block);
@@ -3810,21 +4102,15 @@ html[theme="dark"] {
 
 /* 카테고리 아이콘 애니매이션 */
 @keyframes categoryAnimate {
-    10%,
-    20% {
+    10%, 20% {
         transform: rotate3d(0, 0, 1, -9deg);
     }
 
-    30%,
-    50%,
-    70%,
-    90% {
+    30%, 50%, 70%, 90% {
         transform: rotate3d(0, 0, 1, 9deg);
     }
 
-    40%,
-    60%,
-    80% {
+    40%, 60%, 80% {
         transform: rotate3d(0, 0, 1, -9deg);
     }
 }
