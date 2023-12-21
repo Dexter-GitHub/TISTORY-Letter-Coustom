@@ -1077,9 +1077,11 @@ body:not(#tt-body-page) .inner_index {
 }
 
 .article_view ul li {
+    font-family: Maplestory-Light;
     font-size: 16px;
     line-height: 24px;
-    color: rgba(0, 0, 0, 0.87);
+    color: var(--color-text1);
+    /* color: rgba(0, 0, 0, 0.87); */
     word-break: break-all;
 }
 
@@ -1842,16 +1844,17 @@ figure.fileblock .size {
 }
 
 .area_reply .commentStartline {
-    margin: 15px 0;
+    margin: 25px 0;
+    padding-bottom: 10px;
     border-bottom : 1.5px dashed var(--color-border2);
 }
 
-.area_reply .commentStartline span {
+.area_reply .commentStartline > span {
     color: var(--color-primary1);
 }
 
 .area_reply .commentWrite {  
-    margin-top: 15px;  
+    margin-top: 20px 0;  
     border: 1px solid var(--color-border1);
     border-radius: 10px;
     overflow: hidden;
@@ -2739,7 +2742,7 @@ figure.fileblock .size {
     overflow: hidden;
 }
 
-.book-toc>p {
+.book-toc > p {
     padding-left: 30px;
     height: 50px;
     line-height: 50px;
@@ -2747,16 +2750,17 @@ figure.fileblock .size {
     color: var(--color-bg-page1);
     font-weight: bold;
     user-select: none;
+    margin: 0;
 }
 
-.book-toc>p::before {
+.book-toc > p::before {
     font-family: 'fontawesome';
     content: '\f03a';
     padding-right: 10px;
 }
 
 /* 목차 접기 버튼 */
-.book-toc>p::after {
+.book-toc > p::after {
     font-family: 'fontawesome';
     content: '\f102';
     margin-right: 20px;
@@ -2765,12 +2769,12 @@ figure.fileblock .size {
 }
 
 /* 목차 펼치기 버튼 */
-.book-toc>.toggle::after {
+.book-toc > .toggle::after {
     font-family: 'fontawesome';
     content: '\f103';
 }
 
-.book-toc>.close {
+.book-toc > .close {
     display: none;
 }
 
@@ -3006,6 +3010,10 @@ figure[data-ke-type='opengraph'] .og-title {
     margin: 10px 0;
 }
 
+.contents_style .cmd-style > p { 
+    margin: 0;
+}
+
 .contents_style .cmd-style > p:not(:last-child) {
     padding-bottom: 8px !important;
 }
@@ -3018,6 +3026,7 @@ figure[data-ke-type='opengraph'] .og-title {
 }
 
 .contents_style .blockquote-style-1 > p {
+    margin: 10px 0;
     color: #fff !important;
 }
 

@@ -528,10 +528,13 @@
                                                             <!-- 댓글로 접근시 이 영역 내부의 치환자가 출력됨 -->
                                                             <s_rp>
                                                                 <!-- 기본 댓글 치환자 -->
-                                                                <!-- [##_comment_group_##] -->                                                                
-                                                                <s_rp_count>
-                                                                    <span>[##_article_rep_rp_cnt_##]</span>
-                                                                </s_rp_count>
+                                                                <!-- [##_comment_group_##] -->   
+                                                                <div class="commentStartline">
+                                                                    <span>댓글 </span>
+                                                                    <s_rp_count>
+                                                                        <span>[##_article_rep_rp_cnt_##]</span>
+                                                                    </s_rp_count>
+                                                                </div>
                                                                 <div class="commentWrite">
                                                                     <s_rp_member>
                                                                         <s_rp_guest>                                                                            
@@ -946,7 +949,7 @@
     <!-- 본문 시작 목차 생성 -->
     <script>
         $(document).ready(function() {
-            $('#toc').toc({content: ".tt_article_useless_p_margin", headings: "h2, h3"});
+            $('#toc').toc({content: ".article_view", headings: "h2, h3"});
         });
 
         $(".book-toc > p").before().click(function() {
